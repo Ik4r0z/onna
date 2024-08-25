@@ -1,0 +1,130 @@
+mysql: U1de8JA87Rrb
+
+create database onna_test;
+use onna_test;
+
+create table tbl_user(
+id int primary key not null auto_increment,
+nome varchar(255) not null,
+data_Nasc date not null,
+email varchar(255) not null unique,
+senha varchar(255) not null
+);
+
+select * from tbl_user;
+
+
+/*
+// post
+{
+    "nome": "João Silva",
+    "data_Nasc": "1990-05-10",
+    "email": "joao.silva@email.com",
+    "senha": "senha123"
+}
+
+{
+    "nome": "Maria Oliveira",
+    "data_Nasc": "1985-09-23",
+    "email": "maria.oliveira@email.com",
+    "senha": "senha456"
+}
+
+{
+    "nome": "Pedro Santos",
+    "data_Nasc": "1992-11-30",
+    "email": "pedro.santos@email.com",
+    "senha": "senha789"
+}
+
+{
+    "nome": "Ana Souza",
+    "data_Nasc": "1998-02-17",
+    "email": "ana.souza@email.com",
+    "senha": "senha101"
+}
+
+{
+    "nome": "Lucas Almeida",
+    "data_Nasc": "2001-07-15",
+    "email": "lucas.almeida@email.com",
+    "senha": "senha102"
+}
+
+{
+    "nome": "Carla Mendes",
+    "data_Nasc": "1995-03-05",
+    "email": "carla.mendes@email.com",
+    "senha": "senha103"
+}
+
+{
+    "nome": "Gustavo Lima",
+    "data_Nasc": "1987-06-25",
+    "email": "gustavo.lima@email.com",
+    "senha": "senha104"
+}
+
+{
+    "nome": "Fernanda Rocha",
+    "data_Nasc": "1993-10-19",
+    "email": "fernanda.rocha@email.com",
+    "senha": "senha105"
+}
+
+{
+    "nome": "Ricardo Borges",
+    "data_Nasc": "1999-08-12",
+    "email": "ricardo.borges@email.com",
+    "senha": "senha106"
+}
+
+{
+    "nome": "Juliana Ribeiro",
+    "data_Nasc": "2000-12-04",
+    "email": "juliana.ribeiro@email.com",
+    "senha": "senha107"
+}
+
+//put
+--id: 1
+{
+    "nome": "João da Silva",
+    "data_Nasc": "1990-05-10",
+    "email": "joao.dasilva@email.com",
+    "senha": "novaSenha123"
+}
+
+--id: 2
+{
+    "nome": "Maria dos Santos",
+    "data_Nasc": "1985-09-25",
+    "email": "maria.santos@email.com",
+    "senha": "senha4567"
+}
+
+--id: 3
+{
+    "nome": "Pedro Azevedo",
+    "data_Nasc": "1992-12-01",
+    "email": "pedro.azevedo@email.com",
+    "senha": "novaSenha789"
+}
+
+--id: 4
+{
+    "nome": "Ana Souza",
+    "data_Nasc": "1998-02-18",
+    "email": "ana.souza@email.com",
+    "senha": "senhaNova101"
+}
+
+--id: 5
+{
+    "nome": "Lucas Ferreira",
+    "data_Nasc": "2001-07-16",
+    "email": "lucas.ferreira@email.com",
+    "senha": "senha102Alterada"
+}
+*/
+drop database onna_test;
