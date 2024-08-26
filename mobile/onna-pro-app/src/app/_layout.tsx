@@ -1,4 +1,4 @@
-import { Slot } from "expo-router"
+import { Stack } from "expo-router"
 
 import "../styles/global.css"
 
@@ -20,6 +20,15 @@ export default function Layout() {
     }
 
     return (
-        <Slot />
+        <Stack
+            screenOptions={{
+                headerTintColor: "#000000",
+                headerShadowVisible: false
+            }}
+        >
+            <Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />
+            <Stack.Screen name="(tabs)/login" options={{ title: "", headerStyle: { backgroundColor: "#A3B18A" } }} />
+            <Stack.Screen name="(tabs)/signUp" options={{ title: "", headerStyle: { backgroundColor: "#FFFFFF" } }} />
+        </Stack>
     )
 }
