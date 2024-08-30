@@ -1,9 +1,9 @@
 import { Router } from "express"
 
-import { deleteUsers } from "../controllers/user"
+import { deleteTipoUsuario } from "../controllers/tipoUsuario"
 
 const deleteRoutes:Router = Router()
 
-deleteRoutes.delete("/users/:id", deleteUsers)
+deleteRoutes.delete("/tipoUsuario/:id", deleteTipoUsuario)
 
 export default deleteRoutes
