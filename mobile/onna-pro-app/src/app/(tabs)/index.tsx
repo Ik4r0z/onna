@@ -5,31 +5,35 @@ import { Link } from "expo-router"
 export default function Index() {
     return (
         <SafeAreaView className="flex-1 bg-green-500" >
-
-            <View className="flex-1 justify-center items-center gap-[12.5px]" >
+            <View className="w-full h-full justify-center" >
                 <StatusBar barStyle={"light-content"} />
 
-                <Text className="text-[25px] color-black font-regular" >Bem vindo ao</Text>
-                <Text className="text-[75px] color-green-800 font-medium" >ONNA</Text>
-                <Text className="text-[18.75px] color-black font-regular" >Seu assistente menstrual</Text>
+                <View className="items-center mt-[15px]" >
+                    <Text className="text-[18px] color-black font-Omedium mb-[3px]" >Bem vindo ao</Text>
+                    <Text className="text-[50px] color-green-800 font-Imedium" >ONNA</Text>
+                    <Text className="text-[17px] color-black font-Oregular mb-[3px]" >Seu assistente menstrual</Text>
+                </View>
 
-                <Image className="w-[300px] h-[403px]"
-                    source={require("../../assets/images/doctor.png")}
-                />
+                <View className="items-center mt-[20px]" >
+                    <Image className="w-[335px] h-[450px] m-[10px]"
+                        source={require("@/assets/images/doctor.png")}
+                    />
+                </View>
 
-                <View className="w-full h-[75px] justify-center items-center flex-row gap-[18.75px]" >
-                    <Pressable className="w-[150px] h-[50px] bg-green-800 rounded-[12.5px] justify-center items-center" >
-                        <Link href={"/login"}><Text className="text-[18.75px] color-white font-medium" >Login</Text></Link>
+                <View className="w-[290px] flex-row self-center justify-between" >
+                    <Pressable className="w-[45%] bg-green-800 items-center rounded-[10px] p-[20px] ps-[20px]" >
+                        <Link href={"/(tabs)/login"}><Text className="text-[17.5px] color-white font-Imedium" >Login</Text></Link>
                     </Pressable>
-                    
-                    <Pressable className="w-[150px] h-[50px] border-solid border-green-800 border-[1.5625px] rounded-[12.5px] justify-center items-center" >
-                        <Link href={"/signUp"}><Text className="text-[18.75px] color-green-800 font-medium" >Cadastro</Text></Link>
+
+                    <Pressable className="w-[45%] border-solid border-green-800 border-[2px] items-center rounded-[10px] p-[20px] ps-[20px]" >
+                        <Link href={"/(tabs)/signUp"}><Text className="text-[17.5px] color-green-800 font-Imedium" >Cadastro</Text></Link>
                     </Pressable>
                 </View>
 
-                <Text className="text-[12.5px] color-green-800 font-regular" >Dúvidas? Veja como funciona</Text>
+                <View className="items-center mt-[30px]" >
+                    <Text className="text-[15px] color-green-800 font-Osemibold" >Dúvidas? Veja como funciona</Text>
+                </View>
             </View>
-
         </SafeAreaView>
     )
 }
