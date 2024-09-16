@@ -1,15 +1,11 @@
 import { Router } from "express"
 
-import createRoutes from "./create"
-import readRoutes from "./read"
-import updateRoutes from "./update"
-import deleteRoutes from "./delete"
+import tipoUsuarioRoutes from "./tipoUsuario"
+import adminRoutes from "./admin"
 
 const rootRouter:Router = Router()
 
-rootRouter.use("/create", createRoutes)
-rootRouter.use("/read", readRoutes)
-rootRouter.use("/update", updateRoutes)
-rootRouter.use("/delete", deleteRoutes)
+rootRouter.use(tipoUsuarioRoutes)
+rootRouter.use(adminRoutes)
 
 export default rootRouter
