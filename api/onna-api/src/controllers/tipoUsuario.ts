@@ -2,11 +2,11 @@ import { Request, Response } from "express"
 
 import { db } from "../db/connection"
 
-import { hashSync } from "bcrypt"
+import { hashSync, compareSync } from "bcrypt"
 
-// Create
-export const createTipoUsuario = (req:Request, res:Response) => {
-    const q = "insert into tblTipo_Usuario(`email`, `senha`, `nome`, `dataNasc`, `avatar`, `tipo_Usuario`) values(?)"
+// cadastro_Tipo_Usuario 
+export const cadastro_Tipo_Usuario = async (req:Request, res:Response) => {
+    const q = "call cadastro_Tipo_Usuario(?, ?, ?, ?, ?, ?)"
 
     const values = [
         req.body.email,
@@ -17,73 +17,111 @@ export const createTipoUsuario = (req:Request, res:Response) => {
         req.body.tipo_Usuario
     ]
 
-    db.query(q, [values], (err) => {
+    db.query(q, [...values], (err) => {
         if(err){
-            return res.json(err)
+            return res.status(500).json(err)
         }
 
         return res.status(200).json(values)
     })
 }
 
-// Read
-export const readTipoUsuario = (req:Request, res:Response) => {
-    const q = "select * from tblTipo_Usuario"
-
-    db.query(q, (err, data) => {
-        if(err){
-            return res.json(err)
-        }
-        
-        return res.status(200).json(data)
-    })
-}
-
-// Read by Id
-export const readTipoUsuarioById = (req:Request, res:Response) => {
-    const q = "select * from tblTipo_Usuario where `idTipo_Usuario` = ?"
-
-    db.query(q, req.params.id, (err, data) => {
-        if(err){
-            return res.json(err)
-        }
-        
-        return res.status(200).json(data)
-    })
-}
-
-
-// Update
-export const updateTipoUsuario = (req:Request, res:Response) => {
-    const q = "update tblTipo_Usuario set `email` = ?, `senha` = ?, `nome` = ?, `dataNasc` = ?, `avatar` = ? where `idTipo_Usuario` = ?"
+// armazena_idTipo_Usuario
+export const armazena_idTipo_Usuario = async (req:Request, res:Response) => {
+    const q = "call armazena_idTipo_Usuario(?)"
 
     const values = [
-        req.body.email,
+        req.body.email
+    ]
+
+    db.query(q, [values], (err, data) => {
+        if(err){
+            return res.status(500).json(err)
+        }
+        
+        if (data[0].length === 0) {
+            return res.status(404).json(err);
+        }
+
+        const idTipo_Usuario = data[0][0]
+
+        return res.status(200).json(idTipo_Usuario)
+    })
+}
+
+// login_Tipo_Usuario 
+export const login_Tipo_Usuario = async (req:Request, res:Response) => {
+    const q = "call login_Tipo_Usuario(?)"
+
+    const values = [
+        req.body.email
+    ]
+
+    db.query(q, [values], (err, data) => {
+        if(err){
+            return res.status(500).json(err)
+        }
+        
+        if (data[0].length === 0) {
+            return res.status(404).json(err);
+        }
+        
+        const tipoUsuario = data[0][0]
+
+        const senhaInserida = req.body.senha
+        const senhaArmazenada = tipoUsuario.senha
+
+        const comp = compareSync(senhaInserida, senhaArmazenada)
+
+        if(comp){
+            return res.status(200).json(tipoUsuario);
+        } 
+        else{
+            return res.status(401).json(err)
+        }
+    })
+}
+
+// exibir_Perfil
+export const exibir_Perfil = async (req:Request, res:Response) => {
+    const q = "call exibir_Perfil(?)"
+
+    const values = [
+        req.params.idTipo_Usuario
+    ]
+
+    db.query(q, [values], (err, data) => {
+        if(err){
+            return res.status(500).json(err)
+        }
+        
+        if (data[0].length === 0) {
+            return res.status(404).json(err);
+        }
+
+        const tipoUsuario = data[0][0]
+
+        return res.status(200).json(tipoUsuario)
+    })
+}
+
+// modificar_Perfil
+export const modificar_Perfil = async (req:Request, res:Response) => {
+    const q = "call modificar_Perfil(?, ?, ?, ?, ?)"
+
+    const values = [
+        req.params.idTipo_Usuario,
         hashSync(req.body.senha, 10),
         req.body.nome,
         req.body.dataNasc,
         req.body.avatar
     ]
 
-    db.query(q, [...values, req.params.id], (err) => {
+    db.query(q, [...values], (err) => {
         if(err){
-            return res.json(err)
+            return res.status(500).json(err)
         }
 
         return res.status(200).json(values)
-    })
-}
-
-
-// Delete
-export const deleteTipoUsuario = (req:Request, res:Response) => {
-    const q = "delete from tblTipo_Usuario where `idTipo_Usuario` = ?"
-
-    db.query(q, [req.params.id], (err) => {
-        if(err){
-            return res.json(err)
-        }
-
-        return res.status(200).json("Query successful!")
     })
 }

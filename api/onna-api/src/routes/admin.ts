@@ -1,10 +1,9 @@
 import { Router } from "express"
 
-import { createAdmin, readAdmin } from "../controllers/admin"
+import { cadastro_Admin } from "../controllers/admin"
 
-const adminRoutes:Router = Router()
+const adminRoutes:Router = Router()  
 
-adminRoutes.post("/admin", createAdmin)
-adminRoutes.get("/admin", readAdmin)
+adminRoutes.post("/admin", cadastro_Admin)
 
 export default adminRoutes
