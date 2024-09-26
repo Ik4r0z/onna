@@ -22,7 +22,7 @@ export const criar_Denuncia = async (req:Request, res:Response) => {
     })
 }
 
-// armazena_idDenuncia
+// armazena_idDenuncia 
 export const armazena_idDenuncia = async (req:Request, res:Response) => {
     const q = "call armazena_idDenuncia(?)"
 
