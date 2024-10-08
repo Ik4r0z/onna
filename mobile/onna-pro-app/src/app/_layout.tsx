@@ -1,6 +1,6 @@
 import { Stack } from "expo-router"
 
-import "@/styles/global.css"
+import "../styles/global.css"
 
 import { useFonts, Inter_700Bold, Inter_600SemiBold, Inter_500Medium, Inter_400Regular, Inter_300Light } from "@expo-google-fonts/inter"
 import { OpenSans_700Bold, OpenSans_600SemiBold, OpenSans_500Medium, OpenSans_400Regular, OpenSans_300Light } from "@expo-google-fonts/open-sans"
@@ -24,7 +24,6 @@ export default function Layout() {
     if(!fontsLoaded){
         return <Loading />
     }
-
     return (
         <Stack
             screenOptions={{
