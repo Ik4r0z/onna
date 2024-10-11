@@ -1,56 +1,60 @@
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
+import { Link } from "expo-router"
+
 export default function Login() {
     return (
-        <SafeAreaView className="flex-1 bg-green-500" >
-            <View className="w-full h-full justify-center gap-[11px]" >
+        <SafeAreaView className="flex-1 bg-green-500" >   
+            <View className="w-full h-full justify-center gap-[12.5px]" >
                 <StatusBar barStyle={"light-content"} />
 
-                <View className="w-[95%] h-[25%] flex-row justify-end items-start" >
-                    <Image className="w-[125px] h-[134px]"
+                <View className="w-full justify-end items-end" >
+                    <Image className="w-[125px] h-[134.5px]"
                         source={require("@/assets/images/leaves.png")}
                     />
                 </View>
 
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-                        <View className="w-full h-full bg-white justify-center items-center rounded-t-[49.5px] gap-[16.5px]" >
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular mt-[49.5px]" >Email</Text>
-                            <TextInput className="w-[75%] h-[45px] bg-gray text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
+                        <View className="w-full h-full bg-white justify-center items-center rounded-t-[50px] gap-[12.5px]" >
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular mt-[10px]" >Email</Text>
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                                 placeholder="email@example.com"
                                 keyboardType="email-address"
                             />
 
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular" >Senha</Text>
-                            <TextInput className="w-[75%] h-[45px] bg-gray text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular" >Senha</Text>
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
                                 placeholder="**********"
-                                keyboardType="default"
+                                keyboardType="visible-password"
                             />
 
-                            <Text className="w-[75%] text-[16.5px] color-black font-Oregular" >Esqueceu sua senha? 
-                                <Text className="w-[75%] text-[16.5px] color-green-800 font-Oregular" > Clique aqui</Text>
+                            <Text className="w-[75%] text-[18.75px] color-black font-Oregular mb-[10px]" >Esqueceu Senha?
+                                    <Text className="text-[18.75px] color-green-800 font-Oregular" > Clique aqui</Text>
                             </Text>
 
-                            <Pressable className="w-[75%] h-[45px] bg-green-800 justify-center items-center rounded-[11px]" >
-                                <Text className="text-[16.5px] color-white font-Imedium" >Login</Text>
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
+                                <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
                             </Pressable>
 
-                            <Text className="w-[75%] text-center text-[16.5px] color-black font-Oregular" >Ou</Text>
+                            <Text className="w-[75%] text-[18.75px] text-center color-black font-Oregular mb-[10px]" >Ou</Text>
 
-                            <View className="w-[75%] h-[50px] flex-row justify-center items-center gap-[11px]" >
-                                <Image className="w-[45px] h-[45px]"
+                            <View className="w-[75%] h-[50px] flex-row justify-center items-center gap-[12.5px]" >
+                                <Image className="w-[50px] h-[50px]"
                                     source={require("@/assets/images/facebook.png")}
                                 />
-                                <Image className="w-[45px] h-[45px]"
+                                <Image className="w-[50px] h-[50px]"
                                     source={require("@/assets/images/google.png")}
                                 />
-                                <Image className="w-[45px] h-[45px]"
+                                <Image className="w-[50px] h-[50px]"
                                     source={require("@/assets/images/apple.png")}
                                 />
                             </View>
 
-                            <Text className="w-[75%] text-center text-[16.5px] color-black font-Oregular" >Não possui cadastro? 
-                                <Text className="w-[75%] text-center text-[16.5px] color-green-800 font-Oregular" > Cadastre-se</Text>
+                            <Text className="w-[75%] text-[18.75px] text-center color-black font-Oregular" >Não possui cadastro?
+                                <Link href={"/signUp"} >
+                                    <Text className="text-[18.75px] color-green-800 font-Oregular" > Cadastre-se</Text>
+                                </Link>
                             </Text>
                         </View>
                     </ScrollView>

@@ -2,35 +2,35 @@ import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView,
 
 export default function Password() {
     return (
-        <SafeAreaView className="flex-1 bg-white" >
-            <View className="w-full h-full justify-center" >
+        <SafeAreaView className="flex-1 bg-white" >   
+            <View className="w-full h-full justify-center gap-[12.5px]" >
                 <StatusBar barStyle={"light-content"} />
 
                 <View className="items-center" >
-                    <Image className="w-[200px] h-[238px]"
+                    <Image className="w-[250px] h-[297.5px]"
                         source={require("@/assets/images/examining.png")}
                     />
                 </View>
 
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-                        <View className="w-full h-full justify-center items-center gap-[16.5px]" >
-                            <Text className="w-[75%] text-[24.75px] text-left color-green-800 font-Isemibold mt-[22px]" >Definir Senha</Text>
+                        <View className="w-full h-full justify-center items-center gap-[12.5px]" >
+                            <Text className="w-[75%] text-[25px] text-left color-green-800 font-Ibold" >Definir Senha</Text>
 
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular" >Senha</Text>
-                            <TextInput className="w-[75%] h-[45px] border-solid border-green-800 border-[2px] text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
-                                placeholder="password"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular mt-[10px]" >Senha</Text>
+                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
+                                placeholder="Senha"
                                 keyboardType="default"
                             />
 
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular" >Confirme a senha</Text>
-                            <TextInput className="w-[75%] h-[45px] border-solid border-green-800 border-[2px] text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular" >Confirme a senha</Text>
+                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
                                 placeholder="**********"
-                                keyboardType="default"
+                                keyboardType="visible-password"
                             />
 
-                            <Pressable className="w-[75%] h-[45px] bg-green-800 justify-center items-center rounded-[11px]" >
-                                <Text className="text-[16.5px] color-white font-Imedium" >Salvar</Text>
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
+                                <Text className="text-[18.75px] color-white font-Imedium" >Salvar</Text>
                             </Pressable>
                         </View>
                     </ScrollView>

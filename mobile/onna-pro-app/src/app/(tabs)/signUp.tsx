@@ -4,8 +4,8 @@ import { Link } from "expo-router"
 
 export default function SignUp() {
     return (
-        <SafeAreaView className="flex-1 bg-white" >
-            <View className="w-full h-full justify-center" >
+        <SafeAreaView className="flex-1 bg-white" >   
+            <View className="w-full h-full justify-center gap-[12.5px]" >
                 <StatusBar barStyle={"light-content"} />
 
                 <View className="items-center" >
@@ -16,28 +16,30 @@ export default function SignUp() {
 
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-                        <View className="w-full h-full justify-center items-center gap-[16.5px]" >
-                            <Text className="w-[75%] text-[24.75px] text-left color-green-800 font-Isemibold mt-[22px]" >Cadastro</Text>
+                        <View className="w-full h-full justify-center items-center gap-[12.5px]" >
+                            <Text className="w-[75%] text-[25px] text-left color-green-800 font-Ibold" >Cadastro</Text>
 
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular" >Nome</Text>
-                            <TextInput className="w-[75%] h-[45px] border-solid border-green-800 border-[2px] text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
-                                placeholder="name"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular mt-[10px]" >Nome</Text>
+                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
+                                placeholder="Nome"
                                 keyboardType="default"
                             />
 
-                            <Text className="w-[75%] text-[16.5px] text-left color-black font-Oregular" >Email</Text>
-                            <TextInput className="w-[75%] h-[45px] border-solid border-green-800 border-[2px] text-[16.5px] text-justify color-black font-Oregular rounded-[11px] pl-[6px]"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular" >Email</Text>
+                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                                 placeholder="email@example.com"
                                 keyboardType="email-address"
                             />
 
-                            <Text className="w-[75%] text-[16.5px] color-black font-Oregular" >Já possui cadastro? 
-                                <Text className="w-[75%] text-[16.5px] color-green-800 font-Oregular" > Login</Text>
+                            <Text className="w-[75%] text-[18.75px] color-black font-Oregular mb-[10px]" >Já possui cadastro?
+                                <Link href={"/login"} >
+                                    <Text className="text-[18.75px] color-green-800 font-Oregular" > Login</Text>
+                                </Link>
                             </Text>
 
-                            <Pressable className="w-[75%] h-[45px] bg-green-800 justify-center items-center rounded-[11px]" >
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
                                 <Link href={"/password"} >
-                                    <Text className="text-[16.5px] color-white font-Imedium" >Continuar</Text>
+                                    <Text className="text-[18.75px] color-white font-Imedium" >Cadastro</Text>
                                 </Link>
                             </Pressable>
                         </View>
