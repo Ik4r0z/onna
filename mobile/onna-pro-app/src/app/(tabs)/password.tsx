@@ -1,10 +1,12 @@
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
+import { Link } from "expo-router"
+
 export default function Password() {
     return (
         <SafeAreaView className="flex-1 bg-white" >   
-            <View className="w-full h-full justify-center gap-[12.5px]" >
-                <StatusBar barStyle={"light-content"} />
+            <View className="w-full h-full justify-center gap-[50px]" >
+                <StatusBar barStyle={"dark-content"} />
 
                 <View className="items-center" >
                     <Image className="w-[250px] h-[297.5px]"
@@ -17,20 +19,22 @@ export default function Password() {
                         <View className="w-full h-full justify-center items-center gap-[12.5px]" >
                             <Text className="w-[75%] text-[25px] text-left color-green-800 font-Ibold" >Definir Senha</Text>
 
-                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular mt-[10px]" >Senha</Text>
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-[10px]" >Senha</Text>
                             <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                                 placeholder="Senha"
                                 keyboardType="default"
                             />
 
-                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Oregular" >Confirme a senha</Text>
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Confirme a senha</Text>
                             <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
                                 placeholder="**********"
                                 keyboardType="visible-password"
                             />
 
                             <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
-                                <Text className="text-[18.75px] color-white font-Imedium" >Salvar</Text>
+                                <Link href={"/trainingArea"} >
+                                    <Text className="text-[18.75px] color-white font-Imedium" >Salvar</Text>
+                                </Link>
                             </Pressable>
                         </View>
                     </ScrollView>
