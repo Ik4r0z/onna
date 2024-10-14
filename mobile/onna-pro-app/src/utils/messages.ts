@@ -3,92 +3,92 @@ export type MessageDataProps = ( typeof MESSAGES )[0]
 export const MESSAGES = [
     {
         "id": "1",
-        "name": "Sabrina Marijuana",
+        "name": "Sabrina Oliveira",
         "avatar": "https://mighty.tools/mockmind-api/content/human/68.jpg",
         "marker": true,
-        "message": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "message": "Doutor, estou sentindo uma dor no lado direito do abdômen. O que pode ser?",
         "start": false,
         "date": "12/02/2024"
     },
     {
         "id": "2",
-        "name": "Jonas Leaf",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/23.jpg",
+        "name": "Lucas Silva",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/29.jpg",
         "marker": false,
-        "message": "The quick brown fox jumps over the lazy dog.",
-        "start": true,
-        "date": "13/03/2024"
+        "message": "Bom dia, doutora. Gostaria de saber se preciso de algum exame adicional para meu check-up.",
+        "start": false,
+        "date": "05/03/2024"
     },
     {
         "id": "3",
-        "name": "Alana Cloud",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/57.jpg",
+        "name": "Ana Beatriz",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/32.jpg",
         "marker": true,
-        "message": "A journey of a thousand miles begins with a single step.",
+        "message": "Oi, doutor. A dor de cabeça persiste, mesmo tomando a medicação. Alguma orientação?",
         "start": false,
-        "date": "20/01/2024"
+        "date": "18/03/2024"
     },
     {
         "id": "4",
-        "name": "Carlos Vapor",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/45.jpg",
+        "name": "João Carlos",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/54.jpg",
         "marker": false,
-        "message": "To be or not to be, that is the question.",
-        "start": true,
-        "date": "07/04/2024"
+        "message": "Olá, doutora. Estou com dificuldades para dormir e me sinto cansado durante o dia.",
+        "start": false,
+        "date": "21/03/2024"
     },
     {
         "id": "5",
-        "name": "Fiona Stone",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/33.jpg",
+        "name": "Mariana Alves",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/47.jpg",
         "marker": true,
-        "message": "All that glitters is not gold.",
+        "message": "Doutor, tenho sentido muita ansiedade ultimamente. Existe algum tratamento que recomende?",
         "start": false,
-        "date": "15/05/2024"
+        "date": "27/03/2024"
     },
     {
         "id": "6",
-        "name": "Leo Brook",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/59.jpg",
-        "marker": true,
-        "message": "Fortune favors the brave.",
-        "start": true,
-        "date": "22/06/2024"
+        "name": "Fernando Lima",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/15.jpg",
+        "marker": false,
+        "message": "Doutora, estou com uma tosse que não passa há semanas. Devo me preocupar?",
+        "start": false,
+        "date": "01/04/2024"
     },
     {
         "id": "7",
-        "name": "Mila Wave",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/19.jpg",
-        "marker": false,
-        "message": "Every cloud has a silver lining.",
+        "name": "Cláudia Souza",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/78.jpg",
+        "marker": true,
+        "message": "Bom dia, doutor. Preciso de orientações sobre como controlar a pressão alta.",
         "start": false,
-        "date": "10/07/2024"
+        "date": "05/04/2024"
     },
     {
         "id": "8",
-        "name": "Oscar Dusk",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/74.jpg",
-        "marker": true,
-        "message": "Actions speak louder than words.",
-        "start": true,
-        "date": "18/08/2024"
+        "name": "Rafael Mendes",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/92.jpg",
+        "marker": false,
+        "message": "Doutor, tenho sentido formigamento nas mãos. O que pode estar causando isso?",
+        "start": false,
+        "date": "08/04/2024"
     },
     {
         "id": "9",
-        "name": "Sophie Breeze",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/36.jpg",
-        "marker": false,
-        "message": "Brevity is the soul of wit.",
+        "name": "Juliana Costa",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/27.jpg",
+        "marker": true,
+        "message": "Oi, doutora. Estou grávida e gostaria de saber sobre cuidados essenciais nesse início.",
         "start": false,
-        "date": "05/09/2024"
+        "date": "12/04/2024"
     },
     {
         "id": "10",
-        "name": "Victor Moss",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/90.jpg",
-        "marker": true,
-        "message": "Curiosity killed the cat.",
-        "start": true,
-        "date": "14/10/2024"
+        "name": "Ricardo Alves",
+        "avatar": "https://mighty.tools/mockmind-api/content/human/41.jpg",
+        "marker": false,
+        "message": "Doutor, sinto dores no joelho ao caminhar. Existe algum exercício que posso fazer para ajudar?",
+        "start": false,
+        "date": "15/04/2024"
     }
 ]

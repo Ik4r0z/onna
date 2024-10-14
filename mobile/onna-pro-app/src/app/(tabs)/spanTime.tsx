@@ -6,9 +6,9 @@ export default function SpanTime() {
             <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"light-content"} />
 
-                <View className="justify-center items-center gap-[1px]" >
-                    <Text className="text-[50px] text-center color-green-800 font-Ibold" >Organize seus horários com o
-                        <Text className="text-[50px] color-white font-Ibold" > ONNA</Text> 
+                <View className="justify-center items-center gap-[1px] p-[3.125px]" >
+                    <Text className="text-[37.5px] text-center color-green-800 font-Ibold" >Organize seus horários com o
+                        <Text className="text-[37.5px] color-white font-Ibold" > ONNA</Text> 
                     </Text>
                 </View>
 

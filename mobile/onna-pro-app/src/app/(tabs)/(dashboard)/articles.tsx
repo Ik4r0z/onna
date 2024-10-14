@@ -1,4 +1,4 @@
-import { SafeAreaView, View, StatusBar, Pressable, FlatList } from "react-native"
+import { SafeAreaView, View, StatusBar, Pressable, Text, Image, FlatList } from "react-native"
 
 import { Input } from "@/components/input"
 import { Article } from "@/components/article"

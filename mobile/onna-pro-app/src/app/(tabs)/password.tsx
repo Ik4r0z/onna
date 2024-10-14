@@ -5,7 +5,7 @@ import { Link } from "expo-router"
 export default function Password() {
     return (
         <SafeAreaView className="flex-1 bg-white" >   
-            <View className="w-full h-full justify-center gap-[50px]" >
+            <View className="w-full h-full justify-center gap-[6.25px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="items-center" >

@@ -43,7 +43,7 @@ export default function TrainingArea() {
 
     return (
         <SafeAreaView className="flex-1 bg-white" >   
-            <View className="w-full h-full justify-center gap-[25px]" >
+            <View className="w-full h-full justify-center gap-[12.5px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="items-center" >
@@ -64,7 +64,7 @@ export default function TrainingArea() {
                             <DropdownComponent data={ufData} />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Nº Conselho Regional</Text>
-                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
+                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
                                 placeholder=""
                                 keyboardType="default"
                             />
