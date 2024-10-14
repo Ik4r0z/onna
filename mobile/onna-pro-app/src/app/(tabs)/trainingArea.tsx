@@ -2,45 +2,11 @@ import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView,
 
 import DropdownComponent from "@/components/dropdown"
 
+import { trainingAreaData, ufData } from "@/utils/data"
+
 import { Link } from "expo-router"
 
 export default function TrainingArea() {
-    const trainingAreaData = [
-        { label: 'Medicina', value: 'Medicina' },
-        { label: 'Psicologia', value: 'Psicologia' }
-    ];
-
-    const ufData = [
-        { label: 'Acre (AC)', value: 'AC' },
-        { label: 'Alagoas (AL)', value: 'AL' },
-        { label: 'Amapá (AP)', value: 'AP' },
-        { label: 'Amazonas (AM)', value: 'AM' },
-        { label: 'Bahia (BA)', value: 'BA' },
-        { label: 'Ceará (CE)', value: 'CE' },
-        { label: 'Distrito Federal (DF)', value: 'DF' },
-        { label: 'Espírito Santo (ES)', value: 'ES' },
-        { label: 'Goiás (GO)', value: 'GO' },
-        { label: 'Maranhão (MA)', value: 'MA' },
-        { label: 'Mato Grosso (MT)', value: 'MT' },
-        { label: 'Mato Grosso do Sul (MS)', value: 'MS' },
-        { label: 'Minas Gerais (MG)', value: 'MG' },
-        { label: 'Pará (PA)', value: 'PA' },
-        { label: 'Paraíba (PB)', value: 'PB' },
-        { label: 'Paraná (PR)', value: 'PR' },
-        { label: 'Pernambuco (PE)', value: 'PE' },
-        { label: 'Piauí (PI)', value: 'PI' },
-        { label: 'Rio de Janeiro (RJ)', value: 'RJ' },
-        { label: 'Rio Grande do Norte (RN)', value: 'RN' },
-        { label: 'Rio Grande do Sul (RS)', value: 'RS' },
-        { label: 'Rondônia (RO)', value: 'RO' },
-        { label: 'Roraima (RR)', value: 'RR' },
-        { label: 'Santa Catarina (SC)', value: 'SC' },
-        { label: 'São Paulo (SP)', value: 'SP' },
-        { label: 'Sergipe (SE)', value: 'SE' },
-        { label: 'Tocantins (TO)', value: 'TO' }
-    ];
-    
-
     return (
         <SafeAreaView className="flex-1 bg-white" >   
             <View className="w-full h-full justify-center gap-[12.5px]" >
@@ -64,12 +30,12 @@ export default function TrainingArea() {
                             <DropdownComponent data={ufData} />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Nº Conselho Regional</Text>
-                            <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
+                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-xl shadow-black"
                                 placeholder=""
                                 keyboardType="default"
                             />
 
-                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" >
                                 <Link href={"/spanTime"} >
                                     <Text className="text-[18.75px] color-white font-Imedium" >Salvar</Text>
                                 </Link>

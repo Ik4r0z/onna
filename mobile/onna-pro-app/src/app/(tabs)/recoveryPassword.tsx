@@ -20,7 +20,7 @@ export default function RecoveryPassword() {
 
                     <Text className="text-[18.75px] color-black font-Obold mb-[10px]" >01:00</Text>
 
-                    <Pressable className="w-[37.5%] h-[50px] border-solid border-green-800 border-[2px] justify-center items-center rounded-[12.5px]" >
+                    <Pressable className="w-[37.5%] h-[50px] bg-white border-solid border-green-800 border-[2px] justify-center items-center rounded-[12.5px] shadow-xl shadow-black" >
                         <Link href={"/login"} >
                             <Text className="text-[18.75px] color-green-800 font-Imedium" >Login</Text>
                         </Link>

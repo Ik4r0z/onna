@@ -1,5 +1,7 @@
 import { Tabs } from "expo-router"
 
+import { colors } from "@/styles/colors"
+
 import { MaterialIcons } from "@expo/vector-icons"
 
 export default function Layout() {
@@ -12,9 +14,9 @@ export default function Layout() {
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){
-                        return <MaterialIcons name="article" color={"#222222"} size={size} />
+                        return <MaterialIcons name="article" color={colors.eerie} size={size} />
                     }
-                    return <MaterialIcons name="article" color={"#DAD7CD"} size={size} />
+                    return <MaterialIcons name="article" color={colors.green[400]} size={size} />
                 }
             }} 
             />
@@ -25,9 +27,9 @@ export default function Layout() {
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){
-                        return <MaterialIcons name="chat" color={"#222222"} size={size} />
+                        return <MaterialIcons name="chat" color={colors.eerie} size={size} />
                     }
-                    return <MaterialIcons name="chat" color={"#DAD7CD"} size={size} />
+                    return <MaterialIcons name="chat" color={colors.green[400]} size={size} />
                 }
             }} 
             />
@@ -38,9 +40,9 @@ export default function Layout() {
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){
-                        return <MaterialIcons name="home" color={"#222222"} size={size} />
+                        return <MaterialIcons name="home" color={colors.eerie} size={size} />
                     }
-                    return <MaterialIcons name="home" color={"#DAD7CD"} size={size} />
+                    return <MaterialIcons name="home" color={colors.green[400]} size={size} />
                 }
             }} 
             />
@@ -51,9 +53,9 @@ export default function Layout() {
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){
-                        return <MaterialIcons name="group" color={"#222222"} size={size} />
+                        return <MaterialIcons name="group" color={colors.eerie} size={size} />
                     }
-                    return <MaterialIcons name="group" color={"#DAD7CD"} size={size} />
+                    return <MaterialIcons name="group" color={colors.green[400]} size={size} />
                 }
             }} 
             />
@@ -64,9 +66,9 @@ export default function Layout() {
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){
-                        return <MaterialIcons name="settings" color={"#222222"} size={size} />
+                        return <MaterialIcons name="settings" color={colors.eerie} size={size} />
                     }
-                    return <MaterialIcons name="settings" color={"#DAD7CD"} size={size} />
+                    return <MaterialIcons name="settings" color={colors.green[400]} size={size} />
                 }
             }} 
             />

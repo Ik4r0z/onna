@@ -9,7 +9,7 @@ type InputProps = {
 
 function Input( { children }: InputProps ) {
     return (
-        <View className="w-full h-[50px] bg-white rounded-full flex-row items-center gap-4 p-4" >
+        <View className="w-full h-[50px] bg-white rounded-full flex-row items-center gap-4 p-4 shadow-xl shadow-black" >
             {children}
         </View>
     )
@@ -18,7 +18,7 @@ function Input( { children }: InputProps ) {
 function InputField( { ...rest }: TextInputProps ) {
     return (
         <TextInput className="flex-1 font-Imedium text-[18.75px] text-black"
-        placeholderTextColor={colors.green[800]}
+        placeholderTextColor={colors.dark}
         cursorColor={colors.black}
         {...rest}
         />

@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
+
+import { colors } from '@/styles/colors';
+import { fontFamily } from '@/styles/fontFamily';
+
 import { Dropdown } from 'react-native-element-dropdown';
 
 interface DropdownProps {
@@ -37,14 +41,23 @@ const styles = StyleSheet.create({
   dropdown: {
     width: "75%",
     height: 50,
+    backgroundColor: colors.white,
     borderStyle: "solid",
-    borderColor: "#344E41",
+    borderColor: colors.green[800],
     borderWidth: 2,
     fontSize: 18.75,
     textAlign: "justify",
-    color: "#000000",
+    color: colors.black,
     borderRadius: 12.5,
-    paddingLeft: 6.25
+    paddingLeft: 6.25,
+    shadowColor: colors.black,
+    shadowOffset: { 
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 5
   },
   icon: {
     marginRight: 5,
@@ -54,7 +67,7 @@ const styles = StyleSheet.create({
   },
   selectedTextStyle: {
     fontSize: 18.75,
-    fontFamily: "OpenSans_300Light"
+    fontFamily: fontFamily.Olight
   },
   iconStyle: {
     width: 20,

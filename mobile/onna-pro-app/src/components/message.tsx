@@ -1,10 +1,10 @@
 import { View, Text } from "react-native"
 
-import { Avatar } from "./avatar"
+import { colors } from "@/styles/colors"
 
 import { MaterialIcons } from "@expo/vector-icons"
 
-import { colors } from "@/styles/colors"
+import { Avatar } from "./avatar"
 
 import { MessageDataProps } from "@/utils/messages"
 

@@ -1,11 +1,15 @@
 import { SafeAreaView, View, StatusBar, Pressable, FlatList } from "react-native"
 
-import { Input } from "@/components/input"
-import { Message } from "@/components/message"
+import { colors } from "@/styles/colors"
 
 import { MaterialIcons } from "@expo/vector-icons"
 
+import { Input } from "@/components/input"
+import { Message } from "@/components/message"
+
 import { MESSAGES } from "@/utils/messages"
+
+import { Link } from "expo-router"
 
 export default function Chat() {
     return (
@@ -16,7 +20,9 @@ export default function Chat() {
                 <View className="flex-1 pt-14 p-4" >
                     <Input>
                         <Pressable>
-                            <MaterialIcons name="search" color={"#4B4B4B"} size={25} />
+                            <Link href={"/chat/conversation"} >
+                                <MaterialIcons name="search" color={colors.davys} size={25} />
+                            </Link>
                         </Pressable>
                         <Input.Field placeholder="Pesquisar..." />
                     </Input>

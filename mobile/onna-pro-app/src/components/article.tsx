@@ -1,8 +1,8 @@
 import { View, Text } from "react-native"
 
-import { MaterialIcons } from "@expo/vector-icons"
-
 import { colors } from "@/styles/colors"
+
+import { MaterialIcons } from "@expo/vector-icons"
 
 import { ArticleDataProps } from "@/utils/articles"
 
@@ -12,7 +12,7 @@ type ArticleProps = {
 
 export function Article( { data }: ArticleProps ) {
     return (
-        <View className="w-full bg-white flex-row rounded-[12.5px] shadow-black shadow-xl gap-4 p-4 mt-7" >
+        <View className="w-full bg-white flex-row rounded-[12.5px] shadow-2xl shadow-black gap-4 p-4 mt-7" >
             <View className="flex-1" >
                 <View className="flex-row items-center gap-1" >
 
