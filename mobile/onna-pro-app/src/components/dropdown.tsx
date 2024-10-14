@@ -22,7 +22,7 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
       labelField="label"
       valueField="value"
       placeholder=""
-      searchPlaceholder="Procurar..."
+      searchPlaceholder="Pesquisar..."
       value={value}
       onChange={item => {
         setValue(item.value);

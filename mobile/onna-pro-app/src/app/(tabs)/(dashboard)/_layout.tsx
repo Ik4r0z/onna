@@ -60,7 +60,7 @@ export default function Layout() {
             <Tabs.Screen 
             name="settings" 
             options={{ 
-                headerShown: false, 
+                headerShown: false,
                 title: "",
                 tabBarIcon: ({ focused, color, size }) => {
                     if(focused){

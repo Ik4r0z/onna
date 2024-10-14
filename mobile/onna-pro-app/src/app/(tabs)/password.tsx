@@ -21,7 +21,7 @@ export default function Password() {
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-[10px]" >Senha</Text>
                             <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
-                                placeholder="Senha"
+                                placeholder="**********"
                                 keyboardType="default"
                             />
 
