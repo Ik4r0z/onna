@@ -22,7 +22,7 @@ export default function Home() {
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[75px]" >
+            <View className="w-full h-full justify-center items-center gap-[82.5px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[50px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >

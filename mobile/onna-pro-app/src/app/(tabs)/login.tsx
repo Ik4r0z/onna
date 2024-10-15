@@ -1,8 +1,53 @@
+import React, { useState } from "react"
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
 import { Link } from "expo-router"
 
+import api from "@/services/api"
+
+type Login = { // tipagem dos parâmetros
+    email: string;
+    senha: string;
+}
+
 export default function Login() {
+    const [email, setEmail] = useState("")
+    const [senha, setSenha] = useState("")
+
+    async function login_Tipo_Usuario(data: Login) {
+        try {
+            const res = await api.post("/api/auth/tipoUsuario", {
+                email: data.email,
+                senha: data.senha
+            })
+
+            if(res.status === 200) {
+                console.log(res.data); // futuramente, deverá ser um toast (guardar res.data no async storage)
+            }
+        } 
+        catch (error) {
+            console.log("ERRO: " + error);
+        }
+    }
+
+    const handleLogin = () => { // validação dos dados
+        try {
+            if(email === "" || senha === "") {
+                return // futuramente, deverá ser um toast
+            }
+
+            const data = {
+                email: email, 
+                senha: senha 
+            }
+
+            login_Tipo_Usuario(data)
+        }
+        catch (err) {
+            console.log("ERRO " + err)
+        }
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center gap-[50px]" >
@@ -21,12 +66,16 @@ export default function Login() {
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-xl shadow-black"
                                 placeholder="email@example.com"
                                 keyboardType="email-address"
+                                onChangeText={setEmail}
+                                value={email}
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Senha</Text>
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-xl shadow-black"
                                 placeholder="**********"
                                 keyboardType="visible-password"
+                                onChangeText={setSenha}
+                                value={senha}
                             />
 
                             <Text className="w-[75%] text-[18.75px] color-black font-Iregular mb-[10px]" >Esqueceu Senha?
@@ -35,7 +84,7 @@ export default function Login() {
                                 </Link>
                             </Text>
 
-                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" >
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" onPress={handleLogin} >
                                 <Link href={"/(dashboard)/home"} >
                                     <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
                                 </Link>
