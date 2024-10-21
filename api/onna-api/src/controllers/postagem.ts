@@ -10,8 +10,8 @@ export const criar_Postagem = async (req:Request, res:Response) => {
         req.body.titulo,
         req.body.subtitulo,
         req.body.imagem,
-        req.params.idTipo_Usuario,
-        req.params.idForum
+        req.body.idTipo_Usuario,
+        req.body.idForum
     ]
 
     db.query(q, [...values], (err) => {
@@ -49,7 +49,7 @@ export const consulta_Titulo_Postagem = async (req:Request, res:Response) => {
     const q = "call consulta_Titulo_Postagem(?, ?)"
 
     const values = [
-        req.body.titulo,
+        req.params.titulo,
         req.params.idForum
     ]
 
@@ -71,7 +71,7 @@ export const gostei_Postagem = async (req:Request, res:Response) => {
     const q = "call gostei_Postagem(?)"
 
     const values = [
-        req.params.idPostagem
+        req.body.idPostagem
     ]
 
     db.query(q, [values], (err) => {
@@ -88,7 +88,7 @@ export const desgostei_Postagem = async (req:Request, res:Response) => {
     const q = "call desgostei_Postagem(?)"
 
     const values = [
-        req.params.idPostagem
+        req.body.idPostagem
     ]
 
     db.query(q, [values], (err) => {

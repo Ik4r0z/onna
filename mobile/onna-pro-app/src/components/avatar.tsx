@@ -11,7 +11,7 @@ export function Avatar( { size = "medium", ...rest }: AvatarProps ) {
         <Image className={clsx("rounded-full", {
             "w-10 h-10": size === "small",
             "w-12 h-12": size === "medium",
-            "w-[200px] h-[200px]": size === "large"
+            "w-[182.5px] h-[182.5px]": size === "large"
         })}
         {...rest}
         />

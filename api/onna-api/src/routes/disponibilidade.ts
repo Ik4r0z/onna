@@ -4,11 +4,11 @@ import { criar_Disponibilidade, alterar_Disponibilidade, procurar_Profissional_F
 
 const disponibilidadeRoutes:Router = Router()  
 
-disponibilidadeRoutes.post("/disponibilidade/:idProfissional", criar_Disponibilidade)
+disponibilidadeRoutes.post("/disponibilidade", criar_Disponibilidade)
 
-disponibilidadeRoutes.get("/fDisponibilidade", procurar_Profissional_Fisiologico) // checar
-disponibilidadeRoutes.get("/pDisponibilidade", procurar_Profissional_Psicologico) // checar
+disponibilidadeRoutes.get("/disponibilidadeF", procurar_Profissional_Fisiologico)
+disponibilidadeRoutes.get("/disponibilidadeP", procurar_Profissional_Psicologico)
 
-disponibilidadeRoutes.put("/disponibilidade/:idProfissional", alterar_Disponibilidade)
+disponibilidadeRoutes.put("/disponibilidade", alterar_Disponibilidade)
 
 export default disponibilidadeRoutes

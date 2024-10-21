@@ -8,8 +8,8 @@ export const criar_Resposta_Postagem = async (req:Request, res:Response) => {
 
     const values = [
         req.body.mensagem,
-        req.params.idTipo_Usuario,
-        req.params.idPostagem
+        req.body.idTipo_Usuario,
+        req.body.idPostagem
     ]
 
     db.query(q, [...values], (err) => {
@@ -47,7 +47,7 @@ export const gostei_Resposta = async (req:Request, res:Response) => {
     const q = "call gostei_Resposta(?)"
 
     const values = [
-        req.params.idResposta_Postagem
+        req.body.idResposta_Postagem
     ]
 
     db.query(q, [values], (err) => {
@@ -64,7 +64,7 @@ export const desgostei_Resposta = async (req:Request, res:Response) => {
     const q = "call desgostei_Resposta(?)"
 
     const values = [
-        req.params.idResposta_Postagem
+        req.body.idResposta_Postagem
     ]
 
     db.query(q, [values], (err) => {

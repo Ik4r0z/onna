@@ -4,10 +4,10 @@ import { cadastrar_Calendario, alterar_Calendario, definir_Intervalo_Calendario 
 
 const calendarioPersonalizadoRoutes:Router = Router()  
 
-calendarioPersonalizadoRoutes.post("/calendarioPersonalizado/:idUsuario", cadastrar_Calendario)
+calendarioPersonalizadoRoutes.post("/calendarioPersonalizado", cadastrar_Calendario)
 
-calendarioPersonalizadoRoutes.get("/calendarioPersonalizado", definir_Intervalo_Calendario)
+calendarioPersonalizadoRoutes.get("/calendarioPersonalizado/:idUsuario", definir_Intervalo_Calendario)
 
-calendarioPersonalizadoRoutes.put("/calendarioPersonalizado/:idUsuario", alterar_Calendario)
+calendarioPersonalizadoRoutes.put("/calendarioPersonalizado", alterar_Calendario)
 
 export default calendarioPersonalizadoRoutes

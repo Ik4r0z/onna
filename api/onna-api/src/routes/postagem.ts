@@ -4,13 +4,13 @@ import { criar_Postagem, exibir_Postagem, consulta_Titulo_Postagem, gostei_Posta
 
 const postagemRoutes:Router = Router()
 
-postagemRoutes.post("/postagem/:idForum/:idTipo_Usuario", criar_Postagem)
+postagemRoutes.post("/postagem", criar_Postagem)
 
 postagemRoutes.get("/postagem/:idForum", exibir_Postagem)
-postagemRoutes.get("/tituloPostagem/:idForum", consulta_Titulo_Postagem)
+postagemRoutes.get("/postagem/:titulo/:idForum", consulta_Titulo_Postagem)
 
-postagemRoutes.put("/gPostagem/:idPostagem", gostei_Postagem)
-postagemRoutes.put("/dPostagem/:idPostagem", desgostei_Postagem)
+postagemRoutes.put("/postagemG", gostei_Postagem)
+postagemRoutes.put("/postagemD", desgostei_Postagem)
 
 
 export default postagemRoutes

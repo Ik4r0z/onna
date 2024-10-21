@@ -7,7 +7,7 @@ export const criar_Disponibilidade = async (req:Request, res:Response) => {
     const q = "call criar_Disponibilidade(?, ?, ?, ?)"
 
     const values = [
-        req.params.idProfissional,
+        req.body.idProfissional,
         req.body.data_Disponibilidade,
         req.body.hora_Inicial,
         req.body.hora_Final
@@ -27,7 +27,7 @@ export const alterar_Disponibilidade = async (req:Request, res:Response) => {
     const q = "call alterar_Disponibilidade(?, ?, ?, ?)"
 
     const values = [
-        req.params.idProfissional,
+        req.body.idProfissional,
         req.body.data_Disponibilidade,
         req.body.hora_Inicial,
         req.body.hora_Final

@@ -4,7 +4,7 @@ import { criar_Relatorio_Humor, exibir_Relatorios} from "../controllers/relatori
 
 const relatorioHumorRoutes:Router = Router()  
 
-relatorioHumorRoutes.post("/relatorioHumor/:idUsuario", criar_Relatorio_Humor)
+relatorioHumorRoutes.post("/relatorioHumor", criar_Relatorio_Humor)
 
 relatorioHumorRoutes.get("/relatorioHumor/:idUsuario", exibir_Relatorios)
 

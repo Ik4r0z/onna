@@ -1,6 +1,35 @@
 export const trainingAreaData = [
-    { label: 'Medicina', value: 'Medicina' },
-    { label: 'Psicologia', value: 'Psicologia' }
+    { label: 'Alergia e Imunologia', value: 'CRM' },
+    { label: 'Anestesiologia', value: 'CRM' },
+    { label: 'Angiologia', value: 'CRM' },
+    { label: 'Avaliação Psicológica', value: 'CRP' },
+    { label: 'Cardiologia', value: 'CRM' },
+    { label: 'Cirurgia Geral', value: 'CRM' },
+    { label: 'Cirurgia Pediátrica', value: 'CRM' },
+    { label: 'Clínica Médica', value: 'CRM' },
+    { label: 'Dermatologia', value: 'CRM' },
+    { label: 'Genética Médica', value: 'CRM' },
+    { label: 'Geriatria', value: 'CRM' },
+    { label: 'Ginecologia e Obstetrícia', value: 'CRM' },
+    { label: 'Infectologia', value: 'CRM' },
+    { label: 'Mastologia', value: 'CRM' },
+    { label: 'Medicina de Emergência', value: 'CRM' },
+    { label: 'Medicina de Família e Comunidade', value: 'CRM' },
+    { label: 'Medicina Física e Reabilitação', value: 'CRM' },
+    { label: 'Neuropsicologia', value: 'CRP' },
+    { label: 'Neurologia', value: 'CRM' },
+    { label: 'Nutrologia', value: 'CRM' },
+    { label: 'Ortopedia e Traumatologia', value: 'CRM' },
+    { label: 'Psicologia Clínica', value: 'CRP' },
+    { label: 'Psicologia Escolar e Educacional', value: 'CRP' },
+    { label: 'Psicologia Hospitalar', value: 'CRP' },
+    { label: 'Psicologia em Saúde', value: 'CRP' },
+    { label: 'Psicologia Organizacional e do Trabalho', value: 'CRP' },
+    { label: 'Psicologia Social', value: 'CRP' },
+    { label: 'Psiquiatria', value: 'CRM' },
+    { label: 'Radiologia e Diagnóstico por Imagem', value: 'CRM' },
+    { label: 'Radioterapia', value: 'CRM' },
+    { label: 'Urologia', value: 'CRM' }
 ]
 
 export const ufData = [

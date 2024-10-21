@@ -8,7 +8,6 @@ import contatoRoutes from "./contato"
 import conversaPrivadaRoutes from "./conversaPrivada"
 import denunciaRoutes from "./denuncia"
 import disponibilidadeRoutes from "./disponibilidade"
-import forumRoutes from "./forum"
 import loginRoutes from "./login"
 import notificacaoRoutes from "./notificacao"
 import perfisRoutes from "./perfis"
@@ -27,7 +26,6 @@ rootRouter.use(conversaPrivadaRoutes)
 rootRouter.use(contatoRoutes)
 rootRouter.use(denunciaRoutes)
 rootRouter.use(disponibilidadeRoutes)
-rootRouter.use(forumRoutes)
 rootRouter.use(loginRoutes)
 rootRouter.use(notificacaoRoutes)
 rootRouter.use(perfisRoutes)

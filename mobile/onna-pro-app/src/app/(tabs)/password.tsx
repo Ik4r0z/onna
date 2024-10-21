@@ -5,7 +5,7 @@ import { Link } from "expo-router"
 export default function Password() {
     return (
         <SafeAreaView className="flex-1 bg-white" >   
-            <View className="w-full h-full justify-center gap-[6.25px]" >
+            <View className="w-full h-full justify-center gap-[25px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="items-center" >
@@ -16,17 +16,17 @@ export default function Password() {
 
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
-                        <View className="w-full h-full justify-center items-center gap-[12.5px]" >
+                        <View className="w-full h-full justify-center items-center gap-[18.75px]" >
                             <Text className="w-[75%] text-[25px] text-left color-green-800 font-Ibold" >Definir Senha</Text>
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-[10px]" >Senha</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-xl shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                                 placeholder="**********"
                                 keyboardType="default"
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Confirme a senha</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-xl shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px]"
                                 placeholder="**********"
                                 keyboardType="visible-password"
                             />

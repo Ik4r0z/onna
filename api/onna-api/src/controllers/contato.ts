@@ -7,7 +7,7 @@ export const cadastro_Contato = async (req:Request, res:Response) => {
     const q = "call cadastro_Contato(?)"
 
     const values = [
-        req.params.idTipo_Usuario
+        req.body.idTipo_Usuario
     ]
 
     db.query(q, [values], (err) => {

@@ -11,7 +11,7 @@ export default function HomeLayout() {
             }}
         >
             <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="update" options={{ title: "", headerStyle: { backgroundColor: colors.white } }} />
+            <Stack.Screen name="update" options={{ title: "", headerStyle: { backgroundColor: colors.gray } }} />
         </Stack>
     )
 }

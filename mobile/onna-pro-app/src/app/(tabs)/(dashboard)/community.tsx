@@ -6,14 +6,14 @@ export default function Community() {
             <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                <View className="w-[90%] justify-center items-center gap-[1px]" >
+                <View className="w-[95%] justify-center items-center gap-[1px] p-[3.125px]" >
                     <Text className="text-[37.5px] text-center color-white font-Ibold" >Bem vindo(a), 
-                        <Text className="text-[37.5px] color-green-800 font-Ibold" > a área da comunidade</Text> 
+                        <Text className="text-[37.5px] text-center color-green-800 font-Ibold" > a área da comunidade</Text> 
                     </Text>
                 </View>
 
                 <View className="" >
-                    <Image className="w-[333.3px] h-[358.6px] ml-[50px]"
+                    <Image className="w-[333.3px] h-[358.6px] ml-[37.5px]"
                         source={require("@/assets/images/mask.png")}
                     />
                 </View>

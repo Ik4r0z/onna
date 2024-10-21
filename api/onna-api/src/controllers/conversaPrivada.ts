@@ -8,8 +8,8 @@ export const enviar_Mensagem = async (req:Request, res:Response) => {
 
     const values = [
         req.body.mensagem,
-        req.params.idTipo_Usuario,
-        req.params.idContato
+        req.body.idTipo_Usuario,
+        req.body.idContato
     ]
 
     db.query(q, [...values], (err) => {

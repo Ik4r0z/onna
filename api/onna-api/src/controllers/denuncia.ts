@@ -8,7 +8,7 @@ export const criar_Denuncia = async (req:Request, res:Response) => {
 
     const values = [
         req.body.descricao,
-        req.params.idTipo_Usuario,
+        req.body.idTipo_Usuario,
         req.body.idPostagem,
         req.body.idResposta_Postagem
     ]
@@ -50,8 +50,8 @@ export const relacionar_Categoria_Denuncia = async (req:Request, res:Response) =
     const q = "call relacionar_Categoria_Denuncia(?, ?)"
 
     const values = [
-        req.params.idDenuncia,
-        req.params.idTipo_Denuncia
+        req.body.idDenuncia,
+        req.body.idTipo_Denuncia
     ]
 
     db.query(q, [...values], (err) => {

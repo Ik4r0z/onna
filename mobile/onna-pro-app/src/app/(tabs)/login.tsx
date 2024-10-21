@@ -1,20 +1,23 @@
 import React, { useState } from "react"
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
-import { Link } from "expo-router"
+import { Link, router } from "expo-router"
 
 import api from "@/services/api"
 
-type Login = { // tipagem dos parâmetros
-    email: string;
-    senha: string;
-}
-
 export default function Login() {
+    // tipagem dos parâmetros
+    type LoginData = { 
+        email: string
+        senha: string
+    }
+
+    // hooks
     const [email, setEmail] = useState("")
     const [senha, setSenha] = useState("")
 
-    async function login_Tipo_Usuario(data: Login) {
+    // login
+    async function LoginTipoUsuario(data: LoginData) {
         try {
             const res = await api.post("/api/auth/tipoUsuario", {
                 email: data.email,
@@ -22,18 +25,22 @@ export default function Login() {
             })
 
             if(res.status === 200) {
-                console.log(res.data); // futuramente, deverá ser um toast (guardar res.data no async storage)
+                console.log(res.data); // futuramente deverá ser um toast (guardar res.data no async storage)
+                router.push("/(dashboard)/home")
             }
         } 
         catch (error) {
-            console.log("ERRO: " + error);
+            console.log("ERRO: " + error); // futuramente deverá ser um toast
+            return
         }
     }
 
-    const handleLogin = () => { // validação dos dados
+    // validação e inserção dos dados
+    const LoginHandle = () => {
         try {
             if(email === "" || senha === "") {
-                return // futuramente, deverá ser um toast
+                console.log("ERRO") // futuramente deverá ser um toast
+                return 
             }
 
             const data = {
@@ -41,10 +48,11 @@ export default function Login() {
                 senha: senha 
             }
 
-            login_Tipo_Usuario(data)
+            LoginTipoUsuario(data)
         }
         catch (err) {
-            console.log("ERRO " + err)
+            console.log("ERRO " + err) // futuramente deverá ser um toast
+            return
         }
     }
 
@@ -84,15 +92,13 @@ export default function Login() {
                                 </Link>
                             </Text>
 
-                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" onPress={handleLogin} >
-                                <Link href={"/(dashboard)/home"} >
-                                    <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
-                                </Link>
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" onPress={LoginHandle} >
+                                <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
                             </Pressable>
 
                             <Text className="w-[75%] text-[18.75px] text-center color-black font-Iregular mb-[10px]" >Ou</Text>
 
-                            <View className="w-[75%] h-[50px] flex-row justify-center items-center gap-[12.5px]" >
+                            <View className="w-[75%] h-[50px] flex-row justify-center items-center gap-[18.75px]" >
                                 <Image className="w-[50px] h-[50px]"
                                     source={require("@/assets/images/facebook.png")}
                                 />
@@ -104,7 +110,7 @@ export default function Login() {
                                 />
                             </View>
 
-                            <Text className="w-[75%] text-[18.75px] text-center color-black font-Oregular" >Não possui cadastro?
+                            <Text className="w-[90%] text-[18.75px] text-center color-black font-Oregular" >Não possui cadastro?
                                 <Link href={"/signUp"} >
                                     <Text className="text-[18.75px] color-green-800 font-Oregular" > Cadastre-se</Text>
                                 </Link>

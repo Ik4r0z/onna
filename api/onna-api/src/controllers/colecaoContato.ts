@@ -7,8 +7,8 @@ export const salvar_Contato_1 = async (req:Request, res:Response) => {
     const q = "call salvar_Contato_1(?, ?)"
 
     const values = [
-        req.params.idTipo_Usuario,
-        req.params.idContato
+        req.body.idTipo_Usuario,
+        req.body.idContato
     ]
 
     db.query(q, [...values], (err) => {
@@ -25,8 +25,8 @@ export const salvar_Contato_2 = async (req:Request, res:Response) => {
     const q = "call salvar_Contato_2(?, ?)"
 
     const values = [
-        req.params.idTipo_Usuario,
-        req.params.idContato
+        req.body.idTipo_Usuario,
+        req.body.idContato
     ]
 
     db.query(q, [...values], (err) => {
@@ -43,8 +43,8 @@ export const excluir_Contato_1 = async (req:Request, res:Response) => {
     const q = "call excluir_Contato_1(?, ?)"
 
     const values = [
-        req.params.idTipo_Usuario,
-        req.params.idContato
+        req.body.idTipo_Usuario,
+        req.body.idContato
     ]
 
     db.query(q, [...values], (err, data) => {
@@ -61,8 +61,8 @@ export const excluir_Contato_2 = async (req:Request, res:Response) => {
     const q = "call excluir_Contato_2(?, ?)"
 
     const values = [
-        req.params.idTipo_Usuario,
-        req.params.idContato
+        req.body.idTipo_Usuario,
+        req.body.idContato
     ]
 
     db.query(q, [...values], (err, data) => {

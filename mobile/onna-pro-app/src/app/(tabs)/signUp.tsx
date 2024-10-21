@@ -20,13 +20,13 @@ export default function SignUp() {
                             <Text className="w-[75%] text-[25px] text-left color-green-800 font-Ibold" >Cadastro</Text>
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-[10px]" >Nome</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-xl shadow-black"
-                                placeholder=""
+                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
+                                placeholder=".........."
                                 keyboardType="default"
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Email</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-xl shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-white border-solid border-green-800 border-[2px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                                 placeholder="email@example.com"
                                 keyboardType="email-address"
                             />

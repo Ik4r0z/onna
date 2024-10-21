@@ -22,12 +22,12 @@ export default function Home() {
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[82.5px]" >
+            <View className="w-full h-full justify-center items-center gap-[75px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                <View className="w-[90%] h-[50px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
+                <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
                     <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá, Dr.
-                        <Text className="text-[18.75px] color-green-600 font-Imedium" > Caio Ferreira</Text>
+                        <Text className="text-[18.75px] color-green-600 font-Imedium" > kAiiN</Text>
                     </Text>
 
                     <Avatar source={{ uri: "https://github.com/Ik4r0z.png" }} size={"small"} />
@@ -86,6 +86,8 @@ export default function Home() {
 
 const styles = StyleSheet.create({
     calendar: {
-        backgroundColor: "transparent"
+        backgroundColor: "transparent",
+        width: "100%",  
+        alignSelf: "center"  
     }
 })

@@ -7,7 +7,7 @@ export const criar_Relatorio_Humor = async (req:Request, res:Response) => {
     const q = "call criar_Relatorio_Humor(?, ?)"
 
     const values = [
-        req.params.idUsuario,
+        req.body.idUsuario,
         req.body.media_Humor
     ]
 

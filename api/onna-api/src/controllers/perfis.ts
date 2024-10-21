@@ -7,7 +7,7 @@ export const cadastro_Perfil_Pessoal = async (req:Request, res:Response) => {
     const q = "call cadastro_Perfil_Pessoal(?)"
 
     const values = [
-        req.params.idTipo_Usuario
+        req.body.idTipo_Usuario
     ]
 
     db.query(q, [values], (err) => {
@@ -28,7 +28,7 @@ export const cadastro_Perfil_Profissional = async (req:Request, res:Response) =>
         req.body.crp,
         req.body.uf,
         req.body.area_Formacao,
-        req.params.idTipo_Usuario
+        req.body.idTipo_Usuario
     ]
 
     db.query(q, [...values], (err) => {
@@ -68,11 +68,11 @@ export const modificar_Area_Formacao = async (req:Request, res:Response) => {
     const q = "call modificar_Area_Formacao(?, ?)"
 
     const values = [
-        req.params.idTipo_Usuario,
+        req.body.idTipo_Usuario,
         req.body.area_Formacao
     ]
 
-    db.query(q, [...values], (err, data) => {
+    db.query(q, [...values], (err) => {
         if(err){
             return res.status(500).json(err)
         }
