@@ -1,6 +1,9 @@
 import React, { useState } from "react"
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
+
 import { Link, router } from "expo-router"
 
 import api from "@/services/api"
@@ -25,12 +28,14 @@ export default function Login() {
             })
 
             if(res.status === 200) {
-                console.log(res.data); // futuramente deverá ser um toast (guardar res.data no async storage)
+                console.log(res.data); // guardar res.data no async storage
                 router.push("/(dashboard)/home")
             }
         } 
         catch (error) {
-            console.log("ERRO: " + error); // futuramente deverá ser um toast
+            const data = { type: "error", text1: "ERRO", text2: "" + error }
+            showToast(data)
+
             return
         }
     }
@@ -38,8 +43,24 @@ export default function Login() {
     // validação e inserção dos dados
     const LoginHandle = () => {
         try {
-            if(email === "" || senha === "") {
-                console.log("ERRO") // futuramente deverá ser um toast
+            if(email === "" && senha === "") {
+                const data = { type: "error", text1: "ERRO", text2: "Email e Senha" }
+                showToast(data)
+            
+                return 
+            }
+ 
+            if(email === "") {
+                const data = { type: "error", text1: "ERRO", text2: "Email" }
+                showToast(data)
+
+                return 
+            }
+
+            if(senha === "") {
+                const data = { type: "error", text1: "ERRO", text2: "Senha" }
+                showToast(data)
+
                 return 
             }
 
@@ -50,8 +71,10 @@ export default function Login() {
 
             LoginTipoUsuario(data)
         }
-        catch (err) {
-            console.log("ERRO " + err) // futuramente deverá ser um toast
+        catch (error) {
+            const data = { type: "error", text1: "ERRO", text2: "" + error }
+            showToast(data)
+
             return
         }
     }
@@ -119,6 +142,7 @@ export default function Login() {
                     </ScrollView>
                 </KeyboardAvoidingView>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }

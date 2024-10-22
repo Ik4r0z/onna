@@ -8,6 +8,9 @@ import { MaterialIcons } from "@expo/vector-icons"
 
 import { Avatar } from "@/components/avatar"
 
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
+
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
 
 import { ptBR } from "@/utils/localeCalendarConfig"
@@ -19,6 +22,10 @@ LocaleConfig.defaultLocale = "pt-br"
 
 export default function Home() {
     const [day, setDay] = useState<DateData>()
+
+    
+    const data = { type: "success", text1: "SUCESSO", text2: "Login Efetuado!" }
+    showToast(data)
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
@@ -80,6 +87,7 @@ export default function Home() {
                     </Link>
                 </View>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }
