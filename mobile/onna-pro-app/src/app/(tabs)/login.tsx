@@ -35,7 +35,6 @@ export default function Login() {
         catch (error) {
             const data = { type: "error", text1: "ERRO", text2: "" + error }
             showToast(data)
-
             return
         }
     }
@@ -44,23 +43,20 @@ export default function Login() {
     const LoginHandle = () => {
         try {
             if(email === "" && senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "Email e Senha" }
+                const data = { type: "error", text1: "ERRO", text2: "" }
                 showToast(data)
-            
                 return 
             }
  
             if(email === "") {
-                const data = { type: "error", text1: "ERRO", text2: "Email" }
+                const data = { type: "error", text1: "ERRO", text2: "" }
                 showToast(data)
-
                 return 
             }
 
             if(senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "Senha" }
+                const data = { type: "error", text1: "ERRO", text2: "" }
                 showToast(data)
-
                 return 
             }
 
@@ -74,7 +70,6 @@ export default function Login() {
         catch (error) {
             const data = { type: "error", text1: "ERRO", text2: "" + error }
             showToast(data)
-
             return
         }
     }
@@ -93,8 +88,8 @@ export default function Login() {
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
                         <View className="w-full h-full bg-white justify-center items-center rounded-t-[50px] gap-[12.5px]" >
-                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-[10px]" >Email</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-xl shadow-black"
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" >Email</Text>
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-lg shadow-black"
                                 placeholder="email@example.com"
                                 keyboardType="email-address"
                                 onChangeText={setEmail}
@@ -102,7 +97,7 @@ export default function Login() {
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Senha</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-xl shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-lg shadow-black"
                                 placeholder="**********"
                                 keyboardType="visible-password"
                                 onChangeText={setSenha}
@@ -115,7 +110,7 @@ export default function Login() {
                                 </Link>
                             </Text>
 
-                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-xl shadow-black" onPress={LoginHandle} >
+                            <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-lg shadow-black" onPress={LoginHandle} >
                                 <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
                             </Pressable>
 

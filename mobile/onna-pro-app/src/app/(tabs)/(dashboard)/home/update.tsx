@@ -6,7 +6,7 @@ export default function Update() {
             <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                <View className="w-[90%] h-[500px] bg-white justify-center items-center rounded-[25px] gap-[50px] shadow-2xl shadow-black" >
+                <View className="w-[90%] h-[375px] bg-white justify-center items-center rounded-[25px] gap-[25px] shadow-2xl shadow-black" >
 
                     <TextInput className="w-[75%] h-[50px] border-solid border-green-800 border-b-[0.5px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px]"
                         placeholder="Dia e Mês (dd/MM)"

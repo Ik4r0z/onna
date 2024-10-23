@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { SafeAreaView, View, StatusBar, StyleSheet, Text } from "react-native"
 
 import { colors } from "@/styles/colors"
@@ -23,9 +23,10 @@ LocaleConfig.defaultLocale = "pt-br"
 export default function Home() {
     const [day, setDay] = useState<DateData>()
 
-    
-    const data = { type: "success", text1: "SUCESSO", text2: "Login Efetuado!" }
-    showToast(data)
+    useEffect(()=>{
+        const data = { type: "success", text1: "SUCESSO", text2: "Login Efetuado!" }
+        showToast(data)
+    }, [])
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   

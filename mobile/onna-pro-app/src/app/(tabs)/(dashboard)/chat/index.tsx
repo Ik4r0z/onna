@@ -9,8 +9,6 @@ import { Message } from "@/components/message"
 
 import { MESSAGES } from "@/utils/messages"
 
-import { Link } from "expo-router"
-
 export default function Chat() {
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
@@ -20,9 +18,7 @@ export default function Chat() {
                 <View className="flex-1 pt-14 p-4" >
                     <Input>
                         <Pressable>
-                            <Link href={"/chat/conversation"} >
-                                <MaterialIcons name="search" color={colors.davys} size={25} />
-                            </Link>
+                            <MaterialIcons name="search" color={colors.davys} size={25} />
                         </Pressable>
                         <Input.Field placeholder="Pesquisar..." />
                     </Input>
