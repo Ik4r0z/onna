@@ -39,23 +39,28 @@ export default function Login() {
         }
     }
 
+    // salvando no async storage
+    async function SaveData() {
+
+    }
+
     // validação e inserção dos dados
     const LoginHandle = () => {
         try {
             if(email === "" && senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "" }
+                const data = { type: "error", text1: "ERRO", text2: "1" }
                 showToast(data)
                 return 
             }
  
             if(email === "") {
-                const data = { type: "error", text1: "ERRO", text2: "" }
+                const data = { type: "error", text1: "ERRO", text2: "2" }
                 showToast(data)
                 return 
             }
 
             if(senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "" }
+                const data = { type: "error", text1: "ERRO", text2: "3" }
                 showToast(data)
                 return 
             }
