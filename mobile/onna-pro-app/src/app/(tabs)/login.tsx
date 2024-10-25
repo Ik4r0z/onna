@@ -4,77 +4,62 @@ import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView,
 import Toast from "react-native-toast-message"
 import { showToast } from "@/components/toast"
 
+import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+
 import { Link, router } from "expo-router"
 
 import api from "@/services/api"
-
+ 
 export default function Login() {
-    // tipagem dos parâmetros
-    type LoginData = { 
-        email: string
-        senha: string
-    }
+    // declaração do async storage
+    const { clearStorage, createData } = useAsyncStorage()
 
     // hooks
-    const [email, setEmail] = useState("")
-    const [senha, setSenha] = useState("")
+    const [email, setEmail] = useState<string>("")
+    const [senha, setSenha] = useState<string>("")
 
     // login
-    async function LoginTipoUsuario(data: LoginData) {
+    const LoginTipoUsuario = async (email: string, senha: string) => {
         try {
             const res = await api.post("/api/auth/tipoUsuario", {
-                email: data.email,
-                senha: data.senha
+                email: email,
+                senha: senha
             })
 
             if(res.status === 200) {
-                console.log(res.data); // guardar res.data no async storage
+                await clearStorage()
+                await createData("@login", res.data)
                 router.push("/(dashboard)/home")
             }
         } 
         catch (error) {
-            const data = { type: "error", text1: "ERRO", text2: "" + error }
-            showToast(data)
+            showToast("error", "ERRO", error + "")
             return
         }
-    }
-
-    // salvando no async storage
-    async function SaveData() {
-
     }
 
     // validação e inserção dos dados
     const LoginHandle = () => {
         try {
             if(email === "" && senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "1" }
-                showToast(data)
+                showToast("error", "ERRO", "1")
                 return 
             }
  
             if(email === "") {
-                const data = { type: "error", text1: "ERRO", text2: "2" }
-                showToast(data)
+                showToast("error", "ERRO", "2")
                 return 
             }
 
             if(senha === "") {
-                const data = { type: "error", text1: "ERRO", text2: "3" }
-                showToast(data)
+                showToast("error", "ERRO", "3")
                 return 
             }
 
-            const data = {
-                email: email, 
-                senha: senha 
-            }
-
-            LoginTipoUsuario(data)
+            LoginTipoUsuario(email, senha)
         }
         catch (error) {
-            const data = { type: "error", text1: "ERRO", text2: "" + error }
-            showToast(data)
+            showToast("error", "ERRO", error + "" )
             return
         }
     }

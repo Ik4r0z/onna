@@ -11,6 +11,8 @@ import { Avatar } from "@/components/avatar"
 import Toast from "react-native-toast-message"
 import { showToast } from "@/components/toast"
 
+import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
 
 import { ptBR } from "@/utils/localeCalendarConfig"
@@ -21,11 +23,25 @@ LocaleConfig.locales["pt-br"] = ptBR
 LocaleConfig.defaultLocale = "pt-br"
 
 export default function Home() {
+    // declaração do async storage
+    const { readDataByID } = useAsyncStorage()
+
+    // hooks
     const [day, setDay] = useState<DateData>()
+    const [name, setName] = useState<string>("")
 
     useEffect(()=>{
-        const data = { type: "success", text1: "SUCESSO", text2: "Login Efetuado!" }
-        showToast(data)
+        const Load = async () => {
+            // confirmação do login
+            showToast("success", "SUCESSO", "Login efetuado!")
+
+            // nome do usuário
+            const data = await readDataByID("@login", "nome")
+            console.log(data || "")
+            setName(data)
+        }
+
+        Load()
     }, [])
 
     return (
@@ -35,7 +51,7 @@ export default function Home() {
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
                     <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá, Dr.
-                        <Text className="text-[18.75px] color-green-600 font-Imedium" > kAiiN</Text>
+                        <Text className="text-[18.75px] color-green-600 font-Imedium" > {name}</Text>
                     </Text>
 
                     <Avatar source={{ uri: "https://github.com/Ik4r0z.png" }} size={"small"} />

@@ -1,17 +1,10 @@
 import Toast from "react-native-toast-message"
 
-// tipagem do toast
-type ToastData = { 
-    type: string
-    text1: string
-    text2: string
-}
-
 // configuração do toast
-export const showToast = (data: ToastData) => {
+export const showToast = (type: string, text1: string, text2: string) => {
     Toast.show({
-        type: data.type,
-        text1: data.text1,
-        text2: data.text2
+        type: type,
+        text1: text1,
+        text2: text2
     });
 }
