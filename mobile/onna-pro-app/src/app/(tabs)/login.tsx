@@ -90,6 +90,7 @@ export default function Login() {
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-lg shadow-black"
                                 placeholder="**********"
                                 keyboardType="visible-password"
+                                secureTextEntry={true} // mask (checar)
                                 onChangeText={setSenha}
                                 value={senha}
                             />

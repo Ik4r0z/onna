@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { colors } from '@/styles/colors';
@@ -8,10 +7,11 @@ import { Dropdown } from 'react-native-element-dropdown';
 
 interface DropdownProps {
   data: Array<{ label: string; value: string }>;
+  value: string | null;
+  onChange: (value: string) => void;
 }
 
-const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
-  const [value, setValue] = useState<string | null>(null);
+const DropdownComponent: React.FC<DropdownProps> = ({ data, value, onChange }) => {
 
   return (
     <Dropdown
@@ -29,7 +29,7 @@ const DropdownComponent: React.FC<DropdownProps> = ({ data }) => {
       searchPlaceholder="Pesquisar..."
       value={value}
       onChange={item => {
-        setValue(item.value);
+        onChange(item.value);
       }}
     />
   );

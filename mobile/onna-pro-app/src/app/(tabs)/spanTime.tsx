@@ -1,6 +1,23 @@
+import React, { useEffect } from "react"
+
 import { SafeAreaView, View, StatusBar, Text, Image } from "react-native"
 
+import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+
 export default function SpanTime() {
+    // declaração do async storage
+    const { readData } = useAsyncStorage()
+
+    useEffect(()=>{ // temporário
+        const Load = async () => {
+            // dados do cadastro
+            const data = await readData("@signUp")
+            console.log(data || "")
+        }
+
+        Load()
+    }, [])
+
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center items-center gap-[50px]" >
