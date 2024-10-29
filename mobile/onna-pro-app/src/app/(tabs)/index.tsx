@@ -21,15 +21,9 @@ export default function Index() {
                 </View>
 
                 <View className="w-[75%] h-[50px] flex-row justify-around items-center gap-[1px]" >
-                    <Pressable className="w-[45%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
+                    <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
                         <Link href={"/login"} >
                             <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
-                        </Link>
-                    </Pressable>
-
-                    <Pressable className="w-[45%] h-[50px] bg-green-500 border-solid border-green-800 border-[2px] justify-center items-center rounded-[12.5px]" >
-                        <Link href={"/signUp"} >
-                            <Text className="text-[18.75px] color-green-800 font-Imedium" >Cadastro</Text>
                         </Link>
                     </Pressable>
                 </View>

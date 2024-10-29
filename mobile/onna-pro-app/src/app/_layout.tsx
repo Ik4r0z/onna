@@ -34,11 +34,7 @@ export default function Layout() {
         >
             <Stack.Screen name="(tabs)/index" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)/login" options={{ title: "", headerStyle: { backgroundColor: colors.green[500] } }} />
-            <Stack.Screen name="(tabs)/signUp" options={{ title: "", headerStyle: { backgroundColor: colors.white } }} />
-            <Stack.Screen name="(tabs)/password" options={{ title: "", headerStyle: { backgroundColor: colors.white } }} />
             <Stack.Screen name="(tabs)/recoveryPassword" options={{ title: "", headerStyle: { backgroundColor: colors.white } }} />
-            <Stack.Screen name="(tabs)/trainingArea" options={{ title: "", headerStyle: { backgroundColor: colors.white } }} />
-            <Stack.Screen name="(tabs)/spanTime" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)/(dashboard)" options={{ headerShown: false }} />
         </Stack>
     )

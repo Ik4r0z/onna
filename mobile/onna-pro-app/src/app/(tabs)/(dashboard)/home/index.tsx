@@ -11,7 +11,7 @@ import { Avatar } from "@/components/avatar"
 import Toast from "react-native-toast-message"
 import { showToast } from "@/components/toast"
 
-import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+import { useAsyncStorage } from "@/hooks/useAsyncStorage" 
 
 import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
 
@@ -24,7 +24,7 @@ LocaleConfig.defaultLocale = "pt-br"
 
 export default function Home() {
     // declaração do async storage
-    const { readDataByID } = useAsyncStorage()
+    const { readData, readDataByID } = useAsyncStorage()
 
     // hooks
     const [day, setDay] = useState<DateData>()
@@ -37,7 +37,6 @@ export default function Home() {
 
             // nome do usuário
             const data = await readDataByID("@login", "nome")
-            console.log(data || "")
             setName(data)
         }
 

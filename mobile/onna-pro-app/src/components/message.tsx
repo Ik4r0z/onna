@@ -24,8 +24,7 @@ export function Message( { data }: MessageProps ) {
             router.push("/chat/conversation")
         }
         catch (error) {
-            const data = { type: "error", text1: "ERRO", text2: "" + error }
-            showToast(data)
+            showToast("error", "ERRO", "" + error)
             return
         }
     }
@@ -36,8 +35,7 @@ export function Message( { data }: MessageProps ) {
             Router()
         }
         catch (error) {
-            const data = { type: "error", text1: "ERRO", text2: "" + error }
-            showToast(data)
+            showToast("error", "ERRO", "" + error)
             return
         }
     }

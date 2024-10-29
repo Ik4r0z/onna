@@ -12,7 +12,7 @@ import api from "@/services/api"
  
 export default function Login() {
     // declaração do async storage
-    const { clearStorage, createData } = useAsyncStorage()
+    const { clearStorage, createData, readData } = useAsyncStorage()
 
     // hooks
     const [email, setEmail] = useState<string>("")
@@ -118,12 +118,6 @@ export default function Login() {
                                     source={require("@/assets/images/apple.png")}
                                 />
                             </View>
-
-                            <Text className="w-[90%] text-[18.75px] text-center color-black font-Oregular" >Não possui cadastro?
-                                <Link href={"/signUp"} >
-                                    <Text className="text-[18.75px] color-green-800 font-Oregular" > Cadastre-se</Text>
-                                </Link>
-                            </Text>
                         </View>
                     </ScrollView>
                 </KeyboardAvoidingView>
