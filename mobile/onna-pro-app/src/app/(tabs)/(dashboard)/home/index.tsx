@@ -4,44 +4,79 @@ import { SafeAreaView, View, StatusBar, StyleSheet, Text } from "react-native"
 import { colors } from "@/styles/colors"
 import { fontFamily } from "@/styles/fontFamily"
 
+import { Avatar } from "@/components/avatar"
+
 import { MaterialIcons } from "@expo/vector-icons"
 
-import { Avatar } from "@/components/avatar"
+import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
+import { ptBR } from "@/utils/localeCalendarConfig"
 
 import Toast from "react-native-toast-message"
 import { showToast } from "@/components/toast"
 
 import { useAsyncStorage } from "@/hooks/useAsyncStorage" 
 
-import { Calendar, DateData, LocaleConfig } from "react-native-calendars"
-
-import { ptBR } from "@/utils/localeCalendarConfig"
-
-import { Link } from "expo-router"
-
-LocaleConfig.locales["pt-br"] = ptBR
-LocaleConfig.defaultLocale = "pt-br"
+import { router } from "expo-router"
 
 export default function Home() {
-    // declaração do async storage
-    const { readData, readDataByID } = useAsyncStorage()
+    // idioma do calendário
+    LocaleConfig.locales["pt-br"] = ptBR
+    LocaleConfig.defaultLocale = "pt-br"
+
+    // async storage
+    const { createData, readData, readDataByID } = useAsyncStorage()
 
     // hooks
-    const [day, setDay] = useState<DateData>()
-    const [name, setName] = useState<string>("")
+    const [day, setDay] = useState<DateData>() // calendário
+    const [nome, setNome] = useState<string>("")
 
     useEffect(()=>{
         const Load = async () => {
             // confirmação do login
             showToast("success", "SUCESSO", "Login efetuado!")
 
+            // dados do usuário
+            const data = await readData("@login")
+            console.log(data)
+
             // nome do usuário
-            const data = await readDataByID("@login", "nome")
-            setName(data)
+            const nome = await readDataByID("@login", "nome")
+            setNome(nome)
         }
 
         Load()
     }, [])
+
+    // data
+    const Data = async (day: DateData) => {
+        try{
+            await createData("@home", day)
+            router.push("/(dashboard)/home/update")
+        } 
+        catch (error) {
+            showToast("error", "ERRO", "" + error)
+            console.error
+            return
+        }
+    }
+
+    // validação e inserção
+    const DataHandle = () => {
+        try {
+            if(day === undefined) {
+                showToast("error", "ERRO", "1")
+                console.error
+                return 
+            }
+
+            Data(day)
+        }
+        catch (error) {
+            showToast("error", "ERRO", "" + error)
+            console.error
+            return
+        }
+    }
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
@@ -49,8 +84,8 @@ export default function Home() {
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
-                    <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá, Dr.
-                        <Text className="text-[18.75px] color-green-600 font-Imedium" > {name}</Text>
+                    <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá, Dr(a).
+                        <Text className="text-[18.75px] color-green-600 font-Imedium" > {nome}</Text>
                     </Text>
 
                     <Avatar source={{ uri: "https://github.com/Ik4r0z.png" }} size={"small"} />
@@ -98,9 +133,8 @@ export default function Home() {
                     <View className="w-[90%] h-[50px] text-[18.75px] bg-green-800 justify-center items-center rounded-[12.5px]" >
                         <Text className="text-[18.75px] text-center color-white font-Imedium" >{day?.dateString}</Text>
                     </View>
-                    <Link href={"/(dashboard)/home/update"} >
-                        <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" >Salvar</Text>
-                    </Link>
+
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DataHandle} >Salvar</Text>
                 </View>
             </View>
             <Toast />
@@ -108,6 +142,7 @@ export default function Home() {
     )
 }
 
+// estilos
 const styles = StyleSheet.create({
     calendar: {
         backgroundColor: "transparent",

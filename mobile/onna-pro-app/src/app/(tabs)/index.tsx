@@ -1,8 +1,35 @@
 import { SafeAreaView, View, StatusBar, Text, Image, Pressable } from "react-native"
 
-import { Link } from "expo-router"
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
+
+import { router } from "expo-router"
 
 export default function Index() {
+    // navegação
+    function Router() {
+        try {
+            router.push("/login")
+        }
+        catch (error) {
+            showToast("error", "ERRO", "" + error)
+            console.error
+            return
+        }
+    }
+
+    // validação
+    const RouterHandle = () => {
+        try {
+            Router()
+        }
+        catch (error) {
+            showToast("error", "ERRO", "" + error)
+            console.error
+            return
+        }
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center items-center gap-[50px]" >
@@ -20,11 +47,9 @@ export default function Index() {
                     />
                 </View>
 
-                <View className="w-[75%] h-[50px] flex-row justify-around items-center gap-[1px]" >
-                    <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" >
-                        <Link href={"/login"} >
-                            <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
-                        </Link>
+                <View className="w-[62.5%] h-[50px] flex-row justify-around items-center gap-[1px]" >
+                    <Pressable className="w-full h-[50px] bg-green-800 justify-center items-center rounded-[12.5px]" onPress={RouterHandle} >
+                        <Text className="text-[18.75px] color-white font-Imedium" >Login</Text>
                     </Pressable>
                 </View>
 
@@ -34,6 +59,7 @@ export default function Index() {
                     </Text>
                 </View>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }
