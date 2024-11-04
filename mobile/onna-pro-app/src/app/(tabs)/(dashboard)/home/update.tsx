@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react"
-import { SafeAreaView, View, StatusBar, Text, TextInput, Pressable, StyleSheet } from "react-native"
+import { SafeAreaView, View, StatusBar, Text, Pressable, StyleSheet } from "react-native"
 
 import { colors } from "@/styles/colors"
 import { fontFamily } from "@/styles/fontFamily"
 
 import { TextInputMask } from "react-native-masked-text"
-
-import { DateData } from "react-native-calendars"
 
 import Toast from "react-native-toast-message"
 import { showToast } from "@/components/toast"
@@ -18,18 +16,25 @@ import { router } from "expo-router"
 
 export default function Update() {
     // async storage
-    const { readData, readDataByID } = useAsyncStorage()
+    const { readDataByID, deleteData } = useAsyncStorage()
 
     // hooks
     const [dia, setDia] = useState<string>("")
     const [mes, setMes] = useState<string>("")
+    const [id, setID] = useState<number>(0)
+    const [data, setData] = useState<string>("")
     const [inicio, setInicio] = useState<string>("")
     const [termino, setTermino] = useState<string>("")
-    const [id, setID] = useState<number>(2)
-    const [data, setData] = useState<string>("")
 
     useEffect(()=>{
         const Load = async () => {
+            // datas já inseridas
+            showToast("info", "Agendamentos", "") // puxar as datas pela api
+
+            // id do suario
+            const id = await readDataByID("@login", "idTipo_Usuario")
+            setID(id)
+
             // data selecionada
             const data = await readDataByID("@home", "dateString")
             setData(data)
@@ -47,17 +52,18 @@ export default function Update() {
     }, [])
 
     // criar_Disponibilidade
-    const Disponibilidade = async (idProfissional: number, data_Disponibilidade: string, hora_Inicial: string, hora_Final: string) => {
+    const Disponibilidade = async (id: number, data: string, inicio: string, termino: string) => {
         try {
             const res = await api.post("/api/disponibilidade", {
-                idProfissional: idProfissional, // ?
-                data_Disponibilidade: data_Disponibilidade,
-                hora_Inicial: hora_Inicial,
-                hora_Final: hora_Final
+                idProfissional: id, // idTipo_Usuario
+                data_Disponibilidade: data,
+                hora_Inicial: inicio,
+                hora_Final: termino
             })
 
             if(res.status === 200) {
                 console.log(res.data)
+                await deleteData("@home")
                 router.push("/(dashboard)/home")
             }
         } 

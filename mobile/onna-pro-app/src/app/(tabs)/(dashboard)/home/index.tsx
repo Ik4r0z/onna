@@ -47,8 +47,8 @@ export default function Home() {
         Load()
     }, [])
 
-    // data
-    const Data = async (day: DateData) => {
+    // day
+    const Day = async (day: DateData) => {
         try{
             await createData("@home", day)
             router.push("/(dashboard)/home/update")
@@ -61,7 +61,7 @@ export default function Home() {
     }
 
     // validação e inserção
-    const DataHandle = () => {
+    const DayHandle = () => {
         try {
             if(day === undefined) {
                 showToast("error", "ERRO", "1")
@@ -69,7 +69,7 @@ export default function Home() {
                 return 
             }
 
-            Data(day)
+            Day(day)
         }
         catch (error) {
             showToast("error", "ERRO", "" + error)
@@ -88,7 +88,7 @@ export default function Home() {
                         <Text className="text-[18.75px] color-green-600 font-Imedium" > {nome}</Text>
                     </Text>
 
-                    <Avatar source={{ uri: "https://github.com/Ik4r0z.png" }} size={"small"} />
+                    <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"small"} />
                 </View>
 
                 <View className="w-[90%] max-h-[50%] bg-white rounded-[25px] gap-[12.5px] shadow-black shadow-2xl" >
@@ -134,7 +134,7 @@ export default function Home() {
                         <Text className="text-[18.75px] text-center color-white font-Imedium" >{day?.dateString}</Text>
                     </View>
 
-                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DataHandle} >Salvar</Text>
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Salvar</Text>
                 </View>
             </View>
             <Toast />

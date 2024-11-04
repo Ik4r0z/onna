@@ -3,10 +3,10 @@ export type MessageDataProps = ( typeof MESSAGES )[0]
 export const MESSAGES = [
     {
         "id": "1",
-        "name": "Sabrina Oliveira",
-        "avatar": "https://mighty.tools/mockmind-api/content/human/68.jpg",
+        "name": "Caio Ferreira",
+        "avatar": "https://github.com/Ik4r0z.png",
         "marker": true,
-        "message": "Doutor, estou sentindo uma dor no lado direito do abdômen. O que pode ser?",
+        "message": "Doutora, estou sentindo uma dor no lado direito do abdômen. O que pode ser?",
         "start": false,
         "date": "12/02/2024"
     },

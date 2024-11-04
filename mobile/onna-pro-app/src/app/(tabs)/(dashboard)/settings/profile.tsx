@@ -39,7 +39,7 @@ export default function Profile() {
             <View className="w-full h-full justify-center items-center gap-[12.5px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                    <Avatar source={{ uri: "https://github.com/Ik4r0z.png" }} size={"large"} />
+                    <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"large"} />
 
                     <Pressable className="w-[45%] h-[45px] bg-white justify-center items-center rounded-full shadow-md shadow-black"  >
                         <Text className="text-[15.625px] color-black font-Imedium" >Definir Foto de Perfil</Text>

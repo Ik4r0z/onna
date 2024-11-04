@@ -42,7 +42,19 @@ export const useAsyncStorage = () => {
     }
 
     // delete
-    const deleteData = async (key: string, idTipo_Usuario: number) => { // tipagem dos parâmetros
+    const deleteData = async (key: string) => { // tipagem dos parâmetros
+        try {
+            await AsyncStorage.removeItem(key)
+            return []  
+        }
+        catch (error) {
+            console.log("ERRO 4: " + error)
+            return []
+        }
+    }
+
+    // delete by id
+    const deleteDataByID = async (key: string, idTipo_Usuario: number) => { // tipagem dos parâmetros
         try {
             let data = await readData(key)
             
@@ -52,7 +64,7 @@ export const useAsyncStorage = () => {
             return myData  
         }
         catch (error) {
-            console.log("ERRO 4: " + error)
+            console.log("ERRO 5: " + error)
             return []
         }
     }
@@ -64,7 +76,7 @@ export const useAsyncStorage = () => {
             console.log("Storage is empty...")
         }
         catch (error) {
-            console.log("ERRO 5: " + error)
+            console.log("ERRO 6: " + error)
         }
     }
 
@@ -73,6 +85,7 @@ export const useAsyncStorage = () => {
         readData,
         readDataByID,
         deleteData,
+        deleteDataByID,
         clearStorage
     }
 }
