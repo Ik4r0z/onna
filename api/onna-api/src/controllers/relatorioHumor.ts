@@ -4,11 +4,19 @@ import { db } from "../db/connection"
 
 // criar_Relatorio_Humor 
 export const criar_Relatorio_Humor = async (req:Request, res:Response) => {
-    const q = "call criar_Relatorio_Humor(?, ?)"
+    const q = "call criar_Relatorio_Humor(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
 
     const values = [
         req.body.idUsuario,
-        req.body.media_Humor
+        req.body.humor,
+        req.body.sintoma,
+        req.body.secrecao_Vaginal,
+        req.body.remedio,
+        req.body.intervalo_Hora,
+        req.body.qntd_Agua,
+        req.body.atividade_Fisica,
+        req.body.atividade_Feita,
+        req.body.apos_Atividade,        
     ]
 
     db.query(q, [...values], (err) => {
@@ -20,12 +28,13 @@ export const criar_Relatorio_Humor = async (req:Request, res:Response) => {
     })
 }
 
-// exibir_Relatorios
-export const exibir_Relatorios = async (req:Request, res:Response) => {
-    const q = "call exibir_Relatorios(?)"
+// exibir_Relatorio
+export const exibir_Relatorio = async (req:Request, res:Response) => {
+    const q = "call exibir_Relatorio(?, ?)"
 
     const values = [
-        req.params.idUsuario
+        req.params.idUsuario,
+        req.params.data_Relatorio
     ]
 
     db.query(q, [values], (err, data) => {

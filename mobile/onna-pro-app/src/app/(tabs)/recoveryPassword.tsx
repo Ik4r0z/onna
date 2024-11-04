@@ -1,35 +1,8 @@
 import { SafeAreaView, View, StatusBar, Image, Text, Pressable } from "react-native"
 
-import Toast from "react-native-toast-message"
-import { showToast } from "@/components/toast"
-
-import { router } from "expo-router"
+import { Link } from "expo-router"
 
 export default function RecoveryPassword() {
-    // navegação
-    function Router() {
-        try {
-            router.push("/login")
-        }
-        catch (error) {
-            showToast("error", "ERRO", "" + error)
-            console.error
-            return
-        }
-    }
-
-    // validação
-    const RouterHandle = () => {
-        try {
-            Router()
-        }
-        catch (error) {
-            showToast("error", "ERRO", "" + error)
-            console.error
-            return
-        }
-    }
-
     return (
         <SafeAreaView className="flex-1 bg-white" >   
             <View className="w-full h-full justify-center gap-[50px]" >
@@ -47,8 +20,10 @@ export default function RecoveryPassword() {
 
                     <Text className="text-[18.75px] color-black font-Obold mb-[10px]" >01:00</Text>
 
-                    <Pressable className="w-[62.5%] h-[50px] bg-white border-solid border-green-800 border-[2px] justify-center items-center rounded-[12.5px] mb-5" onPress={RouterHandle} >
-                        <Text className="text-[18.75px] color-green-800 font-Imedium" >Login</Text>
+                    <Pressable className="w-[62.5%] h-[50px] bg-white border-solid border-green-800 border-[2px] justify-center items-center rounded-[12.5px] mb-5" >
+                        <Link href={"/login"} >
+                            <Text className="text-[18.75px] color-green-800 font-Imedium" >Login</Text>
+                        </Link>
                     </Pressable>
 
                     <Text className="text-[18.75px] color-black font-Oregular" >Não recebeu?
@@ -56,7 +31,6 @@ export default function RecoveryPassword() {
                     </Text>
                 </View>
             </View>
-            <Toast />
         </SafeAreaView>
     )
 }

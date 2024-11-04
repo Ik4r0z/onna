@@ -29,23 +29,27 @@ export default function Update() {
     useEffect(()=>{
         const Load = async () => {
             // datas já inseridas
-            showToast("info", "Agendamentos", "") // puxar as datas pela api
+            showToast("info", "Agendamentos", "")
 
             // id do suario
             const id = await readDataByID("@login", "idTipo_Usuario")
             setID(id)
+            console.log(id)
 
             // data selecionada
             const data = await readDataByID("@home", "dateString")
             setData(data)
+            console.log(data)
 
             // dia
             const dia = await readDataByID("@home", "day")
             setDia(dia)
+            console.log(dia)
 
             // mês
             const mes = await readDataByID("@home", "month")
             setMes(mes)
+            console.log(mes)
         }
 
         Load()
@@ -54,11 +58,12 @@ export default function Update() {
     // criar_Disponibilidade
     const Disponibilidade = async (id: number, data: string, inicio: string, termino: string) => {
         try {
+            console.log(id, data, [inicio], [termino])
             const res = await api.post("/api/disponibilidade", {
-                idProfissional: id, // idTipo_Usuario
+                idProfissional: id, // substituir pelo idTipo_Usuario
                 data_Disponibilidade: data,
-                hora_Inicial: inicio,
-                hora_Final: termino
+                hora_Inicial: [inicio],
+                hora_Final: [termino]
             })
 
             if(res.status === 200) {
