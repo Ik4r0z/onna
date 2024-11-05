@@ -4,13 +4,14 @@ import { db } from "../db/connection"
 
 // cadastro_Perfil_Pessoal 
 export const cadastro_Perfil_Pessoal = async (req:Request, res:Response) => {
-    const q = "call cadastro_Perfil_Pessoal(?)"
+    const q = "call cadastro_Perfil_Pessoal(?, ?)"
 
     const values = [
+        req.body.idUsuario,
         req.body.idTipo_Usuario
     ]
 
-    db.query(q, [values], (err) => {
+    db.query(q, [...values], (err) => {
         if(err){
             return res.status(500).json(err)
         }
@@ -21,9 +22,10 @@ export const cadastro_Perfil_Pessoal = async (req:Request, res:Response) => {
 
 // cadastro_Perfil_Profissional
 export const cadastro_Perfil_Profissional = async (req:Request, res:Response) => {
-    const q = "call cadastro_Perfil_Profissional(?, ?, ?, ?, ?)"
+    const q = "call cadastro_Perfil_Profissional(?, ?, ?, ?, ?, ?)"
 
     const values = [
+        req.body.idProfissional,
         req.body.crm,
         req.body.crp,
         req.body.uf,

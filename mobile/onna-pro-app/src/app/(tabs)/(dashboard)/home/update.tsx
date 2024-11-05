@@ -21,6 +21,7 @@ export default function Update() {
     // hooks
     const [dia, setDia] = useState<string>("")
     const [mes, setMes] = useState<string>("")
+
     const [id, setID] = useState<number>(0)
     const [data, setData] = useState<string>("")
     const [inicio, setInicio] = useState<string>("")
@@ -29,27 +30,23 @@ export default function Update() {
     useEffect(()=>{
         const Load = async () => {
             // datas já inseridas
-            showToast("info", "Agendamentos", "")
+            showToast("info", "INFORMAÇÃO", "Agendamentos")
 
             // id do suario
             const id = await readDataByID("@login", "idTipo_Usuario")
             setID(id)
-            console.log(id)
 
             // data selecionada
             const data = await readDataByID("@home", "dateString")
             setData(data)
-            console.log(data)
 
             // dia
             const dia = await readDataByID("@home", "day")
             setDia(dia)
-            console.log(dia)
 
             // mês
             const mes = await readDataByID("@home", "month")
             setMes(mes)
-            console.log(mes)
         }
 
         Load()
@@ -60,7 +57,7 @@ export default function Update() {
         try {
             console.log(id, data, [inicio], [termino])
             const res = await api.post("/api/disponibilidade", {
-                idProfissional: id, // substituir pelo idTipo_Usuario
+                idProfissional: id, 
                 data_Disponibilidade: data,
                 hora_Inicial: [inicio],
                 hora_Final: [termino]

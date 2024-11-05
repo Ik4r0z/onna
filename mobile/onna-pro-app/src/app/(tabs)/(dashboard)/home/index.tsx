@@ -33,7 +33,7 @@ export default function Home() {
     useEffect(()=>{
         const Load = async () => {
             // confirmação do login
-            showToast("success", "SUCESSO", "Login efetuado!")
+            showToast("info", "INFORMAÇÃO", "Home")
 
             // dados do usuário
             const data = await readData("@login")
@@ -80,7 +80,7 @@ export default function Home() {
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[75px]" >
+            <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
@@ -129,11 +129,12 @@ export default function Home() {
                     />
                 </View>
 
-                <View className="w-[90%] h-[18.75%] bg-white flex-column justify-center items-center rounded-[25px] gap-4 shadow-black shadow-2xl" >
+                <View className="w-[90%] h-[25%] bg-white flex-column justify-center items-center rounded-[25px] gap-4 shadow-black shadow-2xl" >  
                     <View className="w-[90%] h-[50px] text-[18.75px] bg-green-800 justify-center items-center rounded-[12.5px]" >
                         <Text className="text-[18.75px] text-center color-white font-Imedium" >{day?.dateString}</Text>
                     </View>
-
+ 
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" >Consultar</Text>
                     <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Salvar</Text>
                 </View>
             </View>

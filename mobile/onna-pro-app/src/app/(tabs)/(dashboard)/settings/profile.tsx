@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react"
-import { SafeAreaView, View, StatusBar, Pressable, Text} from "react-native"
+import { SafeAreaView, View, StatusBar, Pressable, Text, Modal} from "react-native"
+
+import { ModalProfile } from "@/components/modalProfile"
 
 import { Avatar } from "@/components/avatar"
 
@@ -14,6 +16,7 @@ export default function Profile() {
    const [dataNasc, setDataNasc] = useState<string>("")
    const [email, setEmail] = useState<string>("")
    const [senha, setSenha] = useState<string>("")
+   const [modalVisible, setModalVisible] = useState<boolean>(false)
 
    useEffect(()=>{
     const Load = async () => {
@@ -34,9 +37,13 @@ export default function Profile() {
     Load()
 }, [])
 
+    const ModalVisibility = () => {
+        setModalVisible(true)
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[12.5px]" >
+            <View className="w-full h-full justify-center items-center gap-[18.75px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                     <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"large"} />
@@ -61,17 +68,17 @@ export default function Profile() {
                             <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" > Medicina</Text>
                         </Text>
                         <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Imedium" numberOfLines={1} lineBreakMode="tail" >Senha:
-                            <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" numberOfLines={1} lineBreakMode="tail" > {senha}</Text>
+                            <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" numberOfLines={1} lineBreakMode="tail" > **********</Text>
                         </Text>
                     </View>
 
-                    <Text className="w-[90%] text-[15.625px] text-center color-black font-Oregular" >Deseja alterar sua senha?
-                        <Text className="text-[15.625px] color-dark font-regular" > Clique aqui</Text>
-                    </Text>
-
-                    <Pressable className="w-[50%] h-[50px] bg-white justify-center items-center rounded-full shadow-md shadow-black"  >
-                        <Text className="text-[18.75px] color-black font-Imedium" >Alterar Dados</Text>
+                    <Pressable className="w-[50%] h-[50px] bg-white justify-center items-center rounded-full shadow-md shadow-black" onPress={ModalVisibility} >
+                        <Text className="text-[18.75px] color-black font-Imedium" >Alterar Senha</Text>
                     </Pressable>
+
+                    <Modal visible={modalVisible} animationType="fade" transparent={true} >
+                        <ModalProfile />
+                    </Modal>
             </View>
         </SafeAreaView>
     )
