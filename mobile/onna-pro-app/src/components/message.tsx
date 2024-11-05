@@ -11,6 +11,8 @@ import { showToast } from "@/components/toast"
 
 import { MessageDataProps } from "@/utils/messages"
 
+import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+
 import { router } from "expo-router"
 
 type MessageProps = {
@@ -18,24 +20,31 @@ type MessageProps = {
 }
 
 export function Message( { data }: MessageProps ) {
-    // navegação
-    function Router() {
+    // async storage
+    const { createData, deleteData } = useAsyncStorage()
+
+    // passagem do conteúdo
+    const Pass = async (name: string) => {
         try {
-            router.push("/chat/conversation")
-        }
+            await deleteData("@message")
+            await createData("@message", name)
+            router.push("/(dashboard)/chat/conversation")
+        } 
         catch (error) {
             showToast("error", "ERRO", "" + error)
+            console.error
             return
         }
     }
 
-    // validação
-    const RouterHandle = () => {
+    // validação e inserção
+    const PassHandle = () => {
         try {
-            Router()
+            Pass(data.name)
         }
         catch (error) {
             showToast("error", "ERRO", "" + error)
+            console.error
             return
         }
     }
@@ -47,7 +56,7 @@ export function Message( { data }: MessageProps ) {
             <View className="flex-1" >
                 <View className="flex-row items-center gap-1" >
 
-                    <Text className="flex-1 text-[18.75px] font-Imedium text-green-800" onPress={RouterHandle} >{data.name}</Text>
+                    <Text className="flex-1 text-[18.75px] font-Imedium text-green-800" onPress={PassHandle} >{data.name}</Text>
 
                     <Text className="text-[12.5px] font-Ilight text-black" >{data.date}</Text>
                 </View>
