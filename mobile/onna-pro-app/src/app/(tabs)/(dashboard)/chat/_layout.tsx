@@ -15,7 +15,7 @@ export default function ChatLayout() {
     useEffect(()=>{
         const Load = async () => {
             // nome do usuário selecionado
-            const data = await readData("@message")
+            const data = await readData("@conversation")
             console.log(data)
 
             setName(data[0])
