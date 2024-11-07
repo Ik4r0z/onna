@@ -12,7 +12,7 @@ import loginRoutes from "./login"
 import notificacaoRoutes from "./notificacao"
 import perfisRoutes from "./perfis"
 import postagemRoutes from "./postagem"
-import relatorioHumorRoutes from "./relatorioHumor"
+import relatorioRoutes from "./relatorio"
 import respostaPostagemRoutes from "./respostaPostagem"
 import tipoUsuarioRoutes from "./tipoUsuario"
 
@@ -30,7 +30,7 @@ rootRouter.use(loginRoutes)
 rootRouter.use(notificacaoRoutes)
 rootRouter.use(perfisRoutes)
 rootRouter.use(postagemRoutes)
-rootRouter.use(relatorioHumorRoutes)
+rootRouter.use(relatorioRoutes)
 rootRouter.use(respostaPostagemRoutes)
 rootRouter.use(tipoUsuarioRoutes)
 
