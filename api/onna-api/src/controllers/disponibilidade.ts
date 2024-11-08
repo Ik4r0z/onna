@@ -24,14 +24,13 @@ export const criar_Disponibilidade = async (req:Request, res:Response) => {
 
 // exibir_Disponibilidade
 export const exibir_Disponibilidade = async (req:Request, res:Response) => {
-    const q = "call exibir_Disponibilidade(?, ?)"
+    const q = "call exibir_Disponibilidade(?)"
 
     const values = [
-        req.params.idProfissional,
-        req.params.data_Disponibilidade
+        req.params.idProfissional
     ]
 
-    db.query(q, [...values], (err, data) => {
+    db.query(q, [values], (err, data) => {
         if(err){
             return res.status(500).json(err)
         }

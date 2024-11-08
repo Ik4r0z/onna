@@ -1,37 +1,42 @@
 import React, { useState, useEffect } from "react"
-import { Stack } from "expo-router"
+import { Stack, usePathname } from "expo-router"
 
 import { colors } from "@/styles/colors"
 
-import { useAsyncStorage } from "@/hooks/useAsyncStorage" 
+import { useAsyncStorage } from "@/hooks/useAsyncStorage"
 
 export default function ChatLayout() {
     // async storage
     const { readData } = useAsyncStorage()
 
-    // hooks
-    const [name, setName] = useState<string>("")
+    // hooks 
+    const [name, setName] = useState<string>("");
+    const path = usePathname()
 
-    useEffect(()=>{
+    useEffect(() => {
         const Load = async () => {
-            // nome do usuário selecionado
-            const data = await readData("@conversation")
-            console.log(data)
+            const data = await readData("@message")
 
             setName(data[0])
         }
-        Load()
-    }, [])
+
+        if (path.includes("conversation")) {
+            Load()
+        }
+    }, [path]) 
 
     return (
         <Stack
             screenOptions={{
                 headerTintColor: colors.black,
-                headerShadowVisible: false
+                headerShadowVisible: false,
             }}
         >
             <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="conversation" options={{ title: name, headerStyle: { backgroundColor: colors.white } }} />
+            <Stack.Screen 
+                name="conversation" 
+                options={{ title: name || "Erro", headerStyle: { backgroundColor: colors.white } }} 
+            />
         </Stack>
-    )
+    );
 }

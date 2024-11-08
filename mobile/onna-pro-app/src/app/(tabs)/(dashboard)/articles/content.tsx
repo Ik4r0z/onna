@@ -15,7 +15,6 @@ export default function Content() {
         const Load = async () => {
             // artigo selecionado
             const data = await readData("@article")
-            console.log(data)
 
             setTitle(data[0])
             setContent(data[1])

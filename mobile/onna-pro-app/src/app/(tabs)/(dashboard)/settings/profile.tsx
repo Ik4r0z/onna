@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { SafeAreaView, View, StatusBar, Pressable, Text, Modal} from "react-native"
+import { SafeAreaView, View, StatusBar, Pressable, Text, Modal } from "react-native"
 
 import { ModalProfile } from "@/components/modalProfile"
 
@@ -16,7 +16,7 @@ export default function Profile() {
    const [dataNasc, setDataNasc] = useState<string>("")
    const [email, setEmail] = useState<string>("")
    const [senha, setSenha] = useState<string>("")
-   const [modalVisible, setModalVisible] = useState<boolean>(false)
+   const [modalVisible, setModalVisible] = useState<boolean>(false) // modal
 
    useEffect(()=>{
     const Load = async () => {
@@ -76,8 +76,8 @@ export default function Profile() {
                         <Text className="text-[18.75px] color-black font-Imedium" >Alterar Senha</Text>
                     </Pressable>
 
-                    <Modal visible={modalVisible} animationType="fade" transparent={true} >
-                        <ModalProfile />
+                    <Modal visible={modalVisible} animationType="fade" transparent={true} > 
+                        <ModalProfile handleClose={() => setModalVisible(false)} />
                     </Modal>
             </View>
         </SafeAreaView>

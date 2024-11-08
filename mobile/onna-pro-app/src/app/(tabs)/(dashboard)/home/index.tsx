@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
-import { SafeAreaView, View, StatusBar, StyleSheet, Text } from "react-native"
+import { SafeAreaView, View, StatusBar, StyleSheet, Text, Modal } from "react-native"
 
 import { colors } from "@/styles/colors"
 import { fontFamily } from "@/styles/fontFamily"
 
 import { Avatar } from "@/components/avatar"
+
+import { ModalHome } from "@/components/modalHome"
 
 import { MaterialIcons } from "@expo/vector-icons"
 
@@ -29,6 +31,7 @@ export default function Home() {
     // hooks
     const [day, setDay] = useState<DateData>() // calendário
     const [nome, setNome] = useState<string>("")
+    const [modalVisible, setModalVisible] = useState<boolean>(false) // modal
 
     useEffect(()=>{
         const Load = async () => {
@@ -37,7 +40,6 @@ export default function Home() {
 
             // dados do usuário
             const data = await readData("@login")
-            console.log(data)
 
             // nome do usuário
             const nome = await readDataByID("@login", "nome")
@@ -64,7 +66,7 @@ export default function Home() {
     const DayHandle = () => {
         try {
             if(day === undefined) {
-                showToast("error", "ERRO", "1")
+                showToast("error", "ERRO", "Selecione uma data")
                 console.error
                 return 
             }
@@ -76,6 +78,10 @@ export default function Home() {
             console.error
             return
         }
+    }
+
+    const ModalVisibility = () => {
+        setModalVisible(true)
     }
 
     return (
@@ -134,9 +140,14 @@ export default function Home() {
                         <Text className="text-[18.75px] text-center color-white font-Imedium" >{day?.dateString}</Text>
                     </View>
  
-                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" >Consultar</Text>
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={ModalVisibility} >Consultar</Text>
                     <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Salvar</Text>
                 </View>
+
+                
+                <Modal visible={modalVisible} animationType="fade" transparent={true} > 
+                    <ModalHome handleClose={() => setModalVisible(false)} />
+                </Modal>
             </View>
             <Toast />
         </SafeAreaView>

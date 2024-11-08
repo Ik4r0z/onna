@@ -55,7 +55,6 @@ export default function Update() {
     // criar_Disponibilidade
     const Disponibilidade = async (id: number, data: string, inicio: string, termino: string) => {
         try {
-            console.log(id, data, [inicio], [termino])
             const res = await api.post("/api/disponibilidade", {
                 idProfissional: id, 
                 data_Disponibilidade: data,
@@ -80,31 +79,31 @@ export default function Update() {
     const DisponibilidadeHandle = () => {
         try {
             if(id === 0 && data === "" && inicio === "" && termino === "") {
-                showToast("error", "ERRO", "1")
+                showToast("error", "ERRO", "Preencha todos os campos")
                 console.error
                 return 
             }
  
             if(id === 0) {
-                showToast("error", "ERRO", "2")
+                showToast("error", "ERRO", "ID inválido")
                 console.error
                 return 
             }
 
             if(data === "") {
-                showToast("error", "ERRO", "3")
+                showToast("error", "ERRO", "Preencha o campo 'Data'")
                 console.error
                 return 
             }
 
             if(inicio === "") {
-                showToast("error", "ERRO", "4")
+                showToast("error", "ERRO", "Preencha o campo 'Início'")
                 console.error
                 return 
             }
 
             if(termino === "") {
-                showToast("error", "ERRO", "5")
+                showToast("error", "ERRO", "Preencha o campo 'Término'")
                 console.error
                 return 
             }
@@ -125,7 +124,7 @@ export default function Update() {
 
                 <View className="w-[90%] h-[375px] bg-white justify-center items-center rounded-[25px] gap-[25px] shadow-2xl shadow-black" >
 
-                    <Text className="w-[75%] h-[37.5px] border-solid border-green-800 border-b-[0.5px] text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[1.5625px]"> {dia} / {mes} </Text>
+                    <Text className="w-[75%] h-[37.5px] border-solid border-green-800 border-b-[0.5px] text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[1.5625px]"> {dia} / {mes} </Text>
 
                     <TextInputMask style={styles.textInput}
                         type={'datetime'}
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
         fontSize: 18.75,
         textAlign: "justify",
         color: colors.black,
-        fontFamily: fontFamily.Olight,
+        fontFamily: fontFamily.Oregular,
         borderRadius: 12.5,
         paddingLeft: 6.25,
         marginBottom: 5

@@ -7,7 +7,7 @@ import { router } from "expo-router"
 
 export default function Index() {
     // navegação
-    function Router() {
+    const Router = () => {
         try {
             router.push("/login")
         }

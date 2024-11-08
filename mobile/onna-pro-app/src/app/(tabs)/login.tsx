@@ -11,7 +11,7 @@ import { router } from "expo-router"
  
 export default function Login() {
     // async storage
-    const { clearStorage, createData } = useAsyncStorage()
+    const { createData, clearStorage } = useAsyncStorage()
 
     // hooks
     const [email, setEmail] = useState<string>("")
@@ -42,19 +42,19 @@ export default function Login() {
     const LoginHandle = () => {
         try {
             if(email === "" && senha === "") {
-                showToast("error", "ERRO", "1")
+                showToast("error", "ERRO", "Preencha todos os campos")
                 console.error
                 return 
             }
  
             if(email === "") {
-                showToast("error", "ERRO", "2")
+                showToast("error", "ERRO", "Preencha o campo 'Email'")
                 console.error
                 return 
             }
 
             if(senha === "") {
-                showToast("error", "ERRO", "3")
+                showToast("error", "ERRO", "Preencha o campo 'Senha'")
                 console.error
                 return 
             }
@@ -69,7 +69,7 @@ export default function Login() {
     }
 
     // navegação
-    function Router() {
+    const Router = () => {
         try {
             router.push("/recoveryPassword")
         }
@@ -107,7 +107,7 @@ export default function Login() {
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
                         <View className="w-full h-full bg-white justify-center items-center rounded-t-[50px] gap-[12.5px]" >
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" >Email</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] shadow-lg shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[6.25px] shadow-lg shadow-black"
                                 placeholder=""
                                 keyboardType="default"
                                 onChangeText={setEmail}
@@ -115,7 +115,7 @@ export default function Login() {
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Senha</Text>
-                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Olight rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-lg shadow-black"
+                            <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-lg shadow-black"
                                 placeholder="**********"
                                 keyboardType="default"
                                 secureTextEntry={true} // adicionar material icon para visualização

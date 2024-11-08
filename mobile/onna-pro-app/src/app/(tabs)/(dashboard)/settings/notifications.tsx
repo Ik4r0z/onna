@@ -4,6 +4,7 @@ import { SafeAreaView, View, StatusBar, Text, Switch } from "react-native"
 import { colors } from "@/styles/colors"
 
 export default function Notifications() {
+    // hooks
     const [ isDesativar, setIsDesativar ] = useState(false)
     const [ isArtigos, setIsArtigos ] = useState(true)
     const [ isNoticias, setIsNoticias ] = useState(false)

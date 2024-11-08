@@ -6,9 +6,9 @@ export default function Community() {
             <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                <View className="w-[95%] justify-center items-center gap-[1px] p-[3.125px]" >
-                    <Text className="text-[37.5px] text-center color-white font-Ibold" >Bem vindo(a), 
-                        <Text className="text-[37.5px] text-center color-green-800 font-Ibold" > a área da comunidade</Text> 
+                <View className="w-[97%] justify-center items-center gap-[1px] p-[3.125px]" >
+                    <Text className="text-[34.375px] text-center color-white font-Ibold" >Bem vindo(a), 
+                        <Text className="text-[34.375px] text-center color-green-800 font-Ibold" > a área da comunidade</Text> 
                     </Text>
                 </View>
 
