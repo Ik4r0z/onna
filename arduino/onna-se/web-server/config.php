@@ -1,8 +1,8 @@
 <?php 
-define('DB_HOST', 'localhost'); 
-define('DB_USERNAME', 'root'); 
-define('DB_PASSWORD', 'U1de8JA87Rrb'); 
-define('DB_NAME', 'gps');
+define('DB_HOST', 'sql104.infinityfree.com'); 
+define('DB_USERNAME', 'if0_37685184'); 
+define('DB_PASSWORD', '7rS0UbDAqz1C'); 
+define('DB_NAME', 'if0_37685184_gps');
 
 date_default_timezone_set('America/Sao_Paulo');
 
