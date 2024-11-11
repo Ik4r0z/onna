@@ -19,8 +19,8 @@ long interval = 60000;
 void setup()
 {
   //Começa a comunicação serial com Arduino e Arduino IDE (Monitor Serial)
-  Serial.begin(115200);
-  
+  Serial.begin(9600);
+
   //Começa a comunicação serial com Arduino e SIM800L
   sim800L.begin(9600);
 
@@ -34,7 +34,7 @@ void setup()
   sendATcommand("AT", "OK", 2000);
   sendATcommand("AT+CMGF=1", "OK", 2000);
   //sim800L.print("AT+CMGR=40\r");
-  
+
 }
 
 void loop()
@@ -65,29 +65,29 @@ int sendGpsToServer()
         }
       }
     }
-  
+
     //Se newData for verdadeiro
     if(true){
       newData = false;
-      
+
       String latitude, longitude;
       float altitude;
       unsigned long date, time, speed, satellites;
-  
+
       latitude = String(gps.location.lat(), 6); // Latitude em graus (double)
       longitude = String(gps.location.lng(), 6); // Longitude em graus (double)
       altitude = gps.altitude.meters(); // Altitude em metros (double)
       date = gps.date.value(); // Data bruta no formato DDMMAA (u32)
       time = gps.time.value(); // Tempo bruto no formato HHMMSSCC (u32)
       speed = gps.speed.kmph();
-      
+
       Serial.print("Latitude= "); 
       Serial.print(latitude);
       Serial.print(" Longitude= "); 
       Serial.println(longitude);
-  
+
       //if (latitude == 0) {return 0;}
-      
+
       String url, temp;
       url = "http://ENTER_YOUR_WEBSITE/gpsdata.php?lat=";
       url += latitude;
@@ -97,7 +97,7 @@ int sendGpsToServer()
 
       Serial.println(url);    
       delay(300);
-          
+
     sendATcommand("AT+CFUN=1", "OK", 2000);
     //AT+CGATT = 1 O modem Connect está conectado ao GPRS a uma rede. AT+CGATT = 0, o modem não está conectado ao GPRS em uma rede
     sendATcommand("AT+CGATT=1", "OK", 2000);
@@ -134,10 +134,10 @@ int8_t sendATcommand(char* ATcommand, char* expected_answer, unsigned int timeou
     //Inicializa a string
     memset(response, '\0', 100);
     delay(100);
-    
+
     //Limpa o buffer de entrada
     while( sim800L.available() > 0) sim800L.read();
-    
+
     if (ATcommand[0] != '\0'){
       //Envia o comando AT
       sim800L.println(ATcommand);
