@@ -21,8 +21,8 @@ export default function Login() {
     const Login = async (email: string, senha: string) => {
         try {
             const res = await api.post("/api/auth/tipoUsuario", {
-                email: email, // maria.santos@hotmail.com
-                senha: senha  // senha456
+                email: email, // Yasmim@gmail.com
+                senha: senha  // C!@nm123543
             })
 
             if(res.status === 200) {
@@ -92,6 +92,19 @@ export default function Login() {
         }
     }
 
+    // auto inserção
+    const Ghost = () => {
+        try {
+            setEmail("Yasmim@gmail.com")
+            setSenha("C!@nm123543")
+        }
+        catch (error) {
+            showToast("error", "ERRO", "" + error)
+            console.error
+            return
+        }
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center gap-[50px]" >
@@ -106,7 +119,7 @@ export default function Login() {
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
                         <View className="w-full h-full bg-white justify-center items-center rounded-t-[50px] gap-[12.5px]" >
-                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" >Email</Text>
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" onPress={Ghost} >Email</Text>
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[6.25px] shadow-lg shadow-black"
                                 placeholder=""
                                 keyboardType="default"

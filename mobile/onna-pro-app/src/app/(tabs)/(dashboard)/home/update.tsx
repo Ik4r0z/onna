@@ -16,7 +16,7 @@ import { router } from "expo-router"
 
 export default function Update() {
     // async storage
-    const { readDataByID, deleteData } = useAsyncStorage()
+    const { readDataByID } = useAsyncStorage()
 
     // hooks
     const [dia, setDia] = useState<string>("")
@@ -32,7 +32,7 @@ export default function Update() {
             // datas já inseridas
             showToast("info", "INFORMAÇÃO", "Agendamentos")
 
-            // id do suario
+            // id do usuario
             const id = await readDataByID("@login", "idTipo_Usuario")
             setID(id)
 
@@ -64,7 +64,6 @@ export default function Update() {
 
             if(res.status === 200) {
                 console.log(res.data)
-                await deleteData("@home")
                 router.push("/(dashboard)/home")
             }
         } 

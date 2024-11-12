@@ -126,7 +126,7 @@ export const exibir_Postagem_Propria = async (req:Request, res:Response) => {
     const q = "call exibir_Postagem_Propria(?)"
 
     const values = [
-        req.body.idTipo_Usuario
+        req.params.idTipo_Usuario
     ]
 
     db.query(q, [values], (err, data) => {
@@ -147,7 +147,7 @@ export const contagem_Postagem = async (req:Request, res:Response) => {
     const q = "call contagem_Postagem(?)"
 
     const values = [
-        req.body.idTipo_Usuario
+        req.params.idTipo_Usuario
     ]
 
     db.query(q, [values], (err, data) => {

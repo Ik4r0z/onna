@@ -6,7 +6,7 @@ const disponibilidadeRoutes:Router = Router()
 
 disponibilidadeRoutes.post("/disponibilidade", criar_Disponibilidade)
 
-disponibilidadeRoutes.get("/disponibilidade/:idProfissional", exibir_Disponibilidade)
+disponibilidadeRoutes.get("/disponibilidade/:idProfissional/:data_Disponibilidade", exibir_Disponibilidade)
 disponibilidadeRoutes.get("/disponibilidadeF", procurar_Profissional_Fisiologico)
 disponibilidadeRoutes.get("/disponibilidadeP", procurar_Profissional_Psicologico)
 

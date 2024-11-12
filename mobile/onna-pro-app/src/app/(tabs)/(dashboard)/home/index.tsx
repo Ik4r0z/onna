@@ -26,7 +26,7 @@ export default function Home() {
     LocaleConfig.defaultLocale = "pt-br"
 
     // async storage
-    const { createData, readData, readDataByID } = useAsyncStorage()
+    const { createData, readDataByID, deleteData } = useAsyncStorage()
 
     // hooks
     const [day, setDay] = useState<DateData>() // calendário
@@ -38,8 +38,8 @@ export default function Home() {
             // confirmação do login
             showToast("info", "INFORMAÇÃO", "Home")
 
-            // dados do usuário
-            const data = await readData("@login")
+            // excluir @home
+            await deleteData("@home")
 
             // nome do usuário
             const nome = await readDataByID("@login", "nome")
@@ -90,7 +90,7 @@ export default function Home() {
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
-                    <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá, Dr(a).
+                    <Text className="text-[18.75px] color-green-800 font-Imedium" >Olá,
                         <Text className="text-[18.75px] color-green-600 font-Imedium" > {nome}</Text>
                     </Text>
 

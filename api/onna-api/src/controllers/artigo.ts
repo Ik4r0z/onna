@@ -108,19 +108,15 @@ export const consulta_Titulo_Artigo = async (req:Request, res:Response) => {
     })
 }
 
-// consulta_Artigo_Selecionado
-export const consulta_Artigo_Selecionado = async (req:Request, res:Response) => {
-    const q = "call consulta_Artigo_Selecionado(?)"
+// exibir_Artigos
+export const exibir_Artigos = async (req:Request, res:Response) => {
+    const q = "call exibir_Artigos()"
 
-    const values = [
-        req.params.idArtigo
-    ]
-
-    db.query(q, [values], (err, data) => {
+    db.query(q, (err, data) => {
         if(err){
             return res.status(500).json(err)
         }
-        
+
         if (data[0].length === 0) {
             return res.status(404).json(err);
         }

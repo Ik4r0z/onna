@@ -2,43 +2,75 @@ import React, { useState, useEffect } from "react"
 import { SafeAreaView, View, StatusBar, Pressable, Text, Modal } from "react-native"
 
 import { ModalProfile } from "@/components/modalProfile"
+import { ModalAvatar } from "@/components/modalAvatar"
+
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
 
 import { Avatar } from "@/components/avatar"
 
 import { useAsyncStorage } from "@/hooks/useAsyncStorage"
+
+import api from "@/services/api"
 
 export default function Profile() {
    // declaração do async storage
    const { readDataByID } = useAsyncStorage()
 
    // hooks
+   const [id, setID] = useState<number>(0)
    const [nome, setNome] = useState<string>("")
    const [dataNasc, setDataNasc] = useState<string>("")
    const [email, setEmail] = useState<string>("")
-   const [senha, setSenha] = useState<string>("")
-   const [modalVisible, setModalVisible] = useState<boolean>(false) // modal
+   const [area, setArea] = useState<string>("")
+   const [modalVisibleP, setModalVisibleP] = useState<boolean>(false) // modal profile
+   const [modalVisibleA, setModalVisibleA] = useState<boolean>(false) // modal avatar
 
-   useEffect(()=>{
+   useEffect(() => {
     const Load = async () => {
-        // dados do usuário
+      try {
+        // confirmação
+        showToast("info", "INFORMAÇÃO", "Perfil")
+
+        // id
+        const id = await readDataByID("@login", "idTipo_Usuario")
+        setID(id)
+
+        // nome
         const nome = await readDataByID("@login", "nome")
         setNome(nome)
 
+        // dataNasc
         const dataNasc = await readDataByID("@login", "Data de nascimento")
         setDataNasc(dataNasc)
-    
+
+        // email
         const email = await readDataByID("@login", "email")
         setEmail(email)
 
-        const senha = await readDataByID("@login", "senha")
-        setSenha(senha)
+        if (id !== null) {
+            const res = await api.get(`/api/perfilProfissional/${id}`)
+
+            if (res.status === 200) {
+                setArea(res.data.area_Formacao)
+            }
+        }
+      } 
+      catch (error) {
+        showToast("error", "ERRO", "" + error)
+        console.error(error)
+      }
     }
 
     Load()
-}, [])
+  }, [])
 
-    const ModalVisibility = () => {
-        setModalVisible(true)
+    const ModalVisibilityP = () => {
+        setModalVisibleP(true)
+    }
+
+    const ModalVisibilityA = () => {
+        setModalVisibleA(true)
     }
 
     return (
@@ -48,7 +80,7 @@ export default function Profile() {
 
                     <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"large"} />
 
-                    <Pressable className="w-[45%] h-[45px] bg-white justify-center items-center rounded-full shadow-md shadow-black"  >
+                    <Pressable className="w-[45%] h-[45px] bg-white justify-center items-center rounded-full shadow-md shadow-black" onPress={ModalVisibilityA}  >
                         <Text className="text-[15.625px] color-black font-Imedium" >Definir Foto de Perfil</Text>
                     </Pressable>
 
@@ -65,21 +97,26 @@ export default function Profile() {
                             <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" > {email}</Text>
                         </Text>
                         <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Imedium" numberOfLines={1} lineBreakMode="tail" >Área de Formação:
-                            <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" > Medicina</Text>
+                            <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" > {area}</Text>
                         </Text>
                         <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Imedium" numberOfLines={1} lineBreakMode="tail" >Senha:
                             <Text className="w-[75%] text-[15.625px] text-left border-solid border-black border-b-[0.5px] color-black font-Ilight" numberOfLines={1} lineBreakMode="tail" > **********</Text>
                         </Text>
                     </View>
 
-                    <Pressable className="w-[50%] h-[50px] bg-white justify-center items-center rounded-full shadow-md shadow-black" onPress={ModalVisibility} >
+                    <Pressable className="w-[50%] h-[50px] bg-white justify-center items-center rounded-full shadow-md shadow-black" onPress={ModalVisibilityP} >
                         <Text className="text-[18.75px] color-black font-Imedium" >Alterar Senha</Text>
                     </Pressable>
 
-                    <Modal visible={modalVisible} animationType="fade" transparent={true} > 
-                        <ModalProfile handleClose={() => setModalVisible(false)} />
+                    <Modal visible={modalVisibleP} animationType="fade" transparent={true} > 
+                        <ModalProfile handleClose={() => setModalVisibleP(false)} />
+                    </Modal>
+
+                    <Modal visible={modalVisibleA} animationType="fade" transparent={true} > 
+                        <ModalAvatar handleClose={() => setModalVisibleA(false)} />
                     </Modal>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }
