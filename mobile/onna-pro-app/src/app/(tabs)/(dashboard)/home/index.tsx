@@ -36,7 +36,7 @@ export default function Home() {
     useEffect(()=>{
         const Load = async () => {
             // confirmação do login
-            showToast("info", "INFORMAÇÃO", "Home")
+            showToast("success", "SUCESSO", "Home")
 
             // excluir @home
             await deleteData("@home")

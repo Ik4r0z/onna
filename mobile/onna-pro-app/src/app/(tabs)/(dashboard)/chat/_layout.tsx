@@ -20,7 +20,7 @@ export default function ChatLayout() {
             setName(data[0])
         }
 
-        if (path.includes("conversation")) {
+        if (path.includes("chatRoom")) {
             Load()
         }
     }, [path]) 
@@ -34,9 +34,9 @@ export default function ChatLayout() {
         >
             <Stack.Screen name="index" options={{ headerShown: false }} />
             <Stack.Screen 
-                name="conversation" 
+                name="chatRoom" 
                 options={{ title: name || "Erro", headerStyle: { backgroundColor: colors.white } }} 
             />
         </Stack>
-    );
+    )
 }
