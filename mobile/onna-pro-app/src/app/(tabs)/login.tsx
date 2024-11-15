@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef } from "react"
 import { SafeAreaView, View, StatusBar, Image, KeyboardAvoidingView, ScrollView, Text, TextInput, Pressable } from "react-native"
 
 import Toast from "react-native-toast-message"
@@ -7,15 +7,20 @@ import { showToast } from "@/components/toast"
 import { useAsyncStorage } from "@/hooks/useAsyncStorage"
 import api from "@/services/api"
 
-import { router } from "expo-router"
+import { useRouter } from "expo-router"
+
+import { useAuth } from "@/context/authContext"
  
 export default function Login() {
     // async storage
     const { createData, clearStorage } = useAsyncStorage()
 
-    // hooks
-    const [email, setEmail] = useState<string>("")
-    const [senha, setSenha] = useState<string>("")
+    // hooks (autenticação)
+    const router = useRouter()
+    const {login} = useAuth()
+
+    const emailRef = useRef("")
+    const passwordRef = useRef("")
 
     // login_Tipo_Usuario
     const Login = async (email: string, senha: string) => {
@@ -38,28 +43,20 @@ export default function Login() {
         }
     }
 
-    // validação e inserção
-    const LoginHandle = () => {
+    // validação e inserção (autenticação)
+    const LoginHandle = async () => {
         try {
-            if(email === "" && senha === "") {
-                showToast("error", "ERRO", "Preencha todos os campos")
-                console.error
-                return 
+            if(!emailRef.current || !passwordRef.current){
+                showToast("error", "ERRO", "Preencha todos os campos, por favor!")
+                return
             }
- 
-            if(email === "") {
-                showToast("error", "ERRO", "Preencha o campo 'Email'")
-                console.error
-                return 
+    
+            const res = await login(emailRef.current, passwordRef.current)
+            if(!res.success){
+                showToast("info", "INFORMAÇÃO", "" + res.msg)
             }
 
-            if(senha === "") {
-                showToast("error", "ERRO", "Preencha o campo 'Senha'")
-                console.error
-                return 
-            }
-
-            Login(email, senha)
+            Login(emailRef.current, passwordRef.current)
         }
         catch (error) {
             showToast("error", "ERRO", "" + error)
@@ -92,19 +89,6 @@ export default function Login() {
         }
     }
 
-    // auto inserção
-    const Ghost = () => {
-        try {
-            setEmail("Yasmim@gmail.com")
-            setSenha("C!@nm123543")
-        }
-        catch (error) {
-            showToast("error", "ERRO", "" + error)
-            console.error
-            return
-        }
-    }
-
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center gap-[50px]" >
@@ -119,21 +103,21 @@ export default function Login() {
                 <KeyboardAvoidingView className="flex-1" >
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }} >
                         <View className="w-full h-full bg-white justify-center items-center rounded-t-[50px] gap-[12.5px]" >
-                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" onPress={Ghost} >Email</Text>
+                            <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular mt-10" >Email</Text>
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[6.25px] shadow-lg shadow-black"
                                 placeholder=""
+                                placeholderTextColor={"black"}
                                 keyboardType="default"
-                                onChangeText={setEmail}
-                                value={email}
+                                onChangeText={value => emailRef.current = value}
                             />
 
                             <Text className="w-[75%] text-[18.75px] text-left color-black font-Iregular" >Senha</Text>
                             <TextInput className="w-[75%] h-[50px] bg-gray text-[18.75px] text-justify color-black font-Oregular rounded-[12.5px] pl-[6.25px] mb-[10px] shadow-lg shadow-black"
                                 placeholder="**********"
+                                placeholderTextColor={"black"}
                                 keyboardType="default"
                                 secureTextEntry={true} // adicionar material icon para visualização
-                                onChangeText={setSenha}
-                                value={senha}
+                                onChangeText={value => passwordRef.current = value}
                             />
 
                             <Text className="w-[75%] text-[18.75px] color-black font-Iregular mb-[10px]" >Esqueceu Senha?
