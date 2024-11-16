@@ -9,12 +9,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import { getFirestore, collection } from "firebase/firestore"
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAjvbXkW9gSbWOdUIe_arNjjKyyzvASawI",
-  authDomain: "onna-chat.firebaseapp.com",
-  projectId: "onna-chat",
-  storageBucket: "onna-chat.firebasestorage.app",
-  messagingSenderId: "798933079466",
-  appId: "1:798933079466:web:6061a65682612685eb47d3"
+  apiKey: "AIzaSyDhbRB-4x3InwLhcNp3wRVghTvUnD1IW3Y",
+  authDomain: "onna-chat-84d11.firebaseapp.com",
+  projectId: "onna-chat-84d11",
+  storageBucket: "onna-chat-84d11.firebasestorage.app",
+  messagingSenderId: "880908637265",
+  appId: "1:880908637265:web:81e2cd84081a406aa75470"
 };
 
 // Initialize Firebase

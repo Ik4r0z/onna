@@ -11,11 +11,13 @@ import { Loading } from "@/components/loading"
 import { AuthContextProvider, useAuth } from "@/context/authContext"
 
 const LayoutMain = () => {
+    // hooks    
     const { isAuthenticated } = useAuth()
     const segments = useSegments()
     const router = useRouter()
 
     useEffect(() => {
+        // verifica se o usuário está autenticado ou não    
         if (typeof isAuthenticated === "undefined") {
             return
         }
@@ -23,8 +25,10 @@ const LayoutMain = () => {
         const inApp = segments[0] == "(tabs)"
 
         if (isAuthenticated && !inApp) {
-            router.replace("/(dashboard)/home")
+            // redirecionar para home
+            router.replace("/(dashboard)/chat/")
         } else if (isAuthenticated === false) {
+            // redirecionar para landing
             router.replace("/(tabs)/login")
         }
     }, [isAuthenticated])

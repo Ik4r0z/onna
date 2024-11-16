@@ -87,6 +87,27 @@ export const exibir_Artigo_Cuidados_Corpo = async (req:Request, res:Response) =>
     })
 }
 
+// artigo_Selecionado
+export const artigo_Selecionado = async (req:Request, res:Response) => {
+    const q = "call artigo_Selecionado(?)"
+
+    const values = [
+        req.params.idArtigo
+    ]
+
+    db.query(q, [values], (err, data) => {
+        if(err){
+            return res.status(500).json(err)
+        }
+        
+        if (data[0].length === 0) {
+            return res.status(404).json(err);
+        }
+
+        return res.status(200).json(data[0])
+    })
+}
+
 // consulta_Titulo_Artigo
 export const consulta_Titulo_Artigo = async (req:Request, res:Response) => {
     const q = "call consulta_Titulo_Artigo(?)"

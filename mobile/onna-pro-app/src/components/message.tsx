@@ -28,7 +28,7 @@ export function Message( { data }: MessageProps ) {
         try {
             await deleteData("@message")
             await createData("@message", name)
-            router.push("/(dashboard)/chat/conversation")
+            router.push("/(dashboard)/chat/chatRoom")
         } 
         catch (error) {
             showToast("error", "ERRO", "" + error)

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { SafeAreaView, View, StatusBar, StyleSheet, Text, Modal } from "react-native"
+import { SafeAreaView, View, StatusBar, StyleSheet, Text, Modal, Pressable } from "react-native"
 
 import { colors } from "@/styles/colors"
 import { fontFamily } from "@/styles/fontFamily"
@@ -19,6 +19,7 @@ import { showToast } from "@/components/toast"
 import { useAsyncStorage } from "@/hooks/useAsyncStorage" 
 
 import { router } from "expo-router"
+import { useAuth } from "@/context/authContext"
 
 export default function Home() {
     // idioma do calendário
@@ -29,6 +30,7 @@ export default function Home() {
     const { createData, readDataByID, deleteData } = useAsyncStorage()
 
     // hooks
+    const {logout} = useAuth()
     const [day, setDay] = useState<DateData>() // calendário
     const [nome, setNome] = useState<string>("")
     const [modalVisible, setModalVisible] = useState<boolean>(false) // modal
@@ -48,6 +50,11 @@ export default function Home() {
 
         Load()
     }, [])
+
+    // logout
+    const logoutHandle = async () => {
+        await logout()
+    }
 
     // day
     const Day = async (day: DateData) => {
@@ -86,7 +93,7 @@ export default function Home() {
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[50px]" >
+            <View className="w-full h-full justify-center items-center gap-[25px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
@@ -144,6 +151,9 @@ export default function Home() {
                     <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Salvar</Text>
                 </View>
 
+                <Pressable onPress={logoutHandle} >
+                    <Text className="text-lg color-green-800 font-semibold" >Sair</Text>
+                </Pressable>
                 
                 <Modal visible={modalVisible} animationType="fade" transparent={true} > 
                     <ModalHome handleClose={() => setModalVisible(false)} />

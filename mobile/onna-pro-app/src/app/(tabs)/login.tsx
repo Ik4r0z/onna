@@ -33,7 +33,7 @@ export default function Login() {
             if(res.status === 200) {
                 await clearStorage()
                 await createData("@login", res.data)
-                router.push("/(dashboard)/home")
+                router.push("/(dashboard)/chat")
             }
         } 
         catch (error) {
@@ -57,30 +57,6 @@ export default function Login() {
             }
 
             Login(emailRef.current, passwordRef.current)
-        }
-        catch (error) {
-            showToast("error", "ERRO", "" + error)
-            console.error
-            return
-        }
-    }
-
-    // navegação
-    const Router = () => {
-        try {
-            router.push("/recoveryPassword")
-        }
-        catch (error) {
-            showToast("error", "ERRO", "" + error)
-            console.error
-            return
-        }
-    }
-
-    // validação
-    const RouterHandle = () => {
-        try {
-            Router()
         }
         catch (error) {
             showToast("error", "ERRO", "" + error)
@@ -121,7 +97,7 @@ export default function Login() {
                             />
 
                             <Text className="w-[75%] text-[18.75px] color-black font-Iregular mb-[10px]" >Esqueceu Senha?
-                                <Text className="text-[18.75px] color-green-800 font-Iregular" onPress={RouterHandle} > Clique aqui</Text>
+                                <Text className="text-[18.75px] color-green-800 font-Iregular" onPress={() => router.push("/recoveryPassword")} > Clique aqui</Text>
                             </Text>
 
                             <Pressable className="w-[75%] h-[50px] bg-green-800 justify-center items-center rounded-[12.5px] shadow-lg shadow-black" onPress={LoginHandle} >
