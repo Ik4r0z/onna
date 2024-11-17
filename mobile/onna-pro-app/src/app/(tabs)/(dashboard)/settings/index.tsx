@@ -1,30 +1,29 @@
-import React, { useState } from "react"
-import { SafeAreaView, View, StatusBar, Text, Switch } from "react-native"
+import React, { useEffect } from "react"
+import { SafeAreaView, View, StatusBar, Text } from "react-native"
 
 import { colors } from "@/styles/colors"
 
 import { MaterialIcons } from "@expo/vector-icons"
 
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
+
 import { Link } from "expo-router"
 
 export default function Settings() {
-    const [ isDarkMode, setIsDarkMode ] = useState(false)
+    // hooks
+    useEffect(() => {
+        const Load = async () => {
+            showToast("info", "CONFIGURAÇÕES", "")
+        }
+        
+        Load()
+    }, [])
     
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
             <View className="w-full h-full justify-center items-center gap-[50px]" >
                 <StatusBar barStyle={"dark-content"} />
-
-                <View className="w-[75%] h-[75px] bg-white flex-row justify-around items-center rounded-full shadow-black shadow-xl gap-[1px]" >
-                    <MaterialIcons name="dark-mode" color={colors.davys} size={25} />
-                    <Text className="text-[18.75px] color-black font-Imedium" >Modo noturno</Text>
-                    <Switch  
-                        value={isDarkMode}
-                        onValueChange={() => setIsDarkMode((previousState)  => !previousState)}
-                        trackColor={{ false: colors.green[400], true: colors.green[800] }}
-                        thumbColor={colors.green[800]}
-                    />
-                </View>
 
                 <View className="w-[75%] h-[75px] bg-white flex-row justify-center items-center rounded-full shadow-black shadow-xl gap-[82.5px]" >
                     <MaterialIcons name="account-circle" color={colors.davys} size={25} />
@@ -54,6 +53,7 @@ export default function Settings() {
                     <MaterialIcons name="chevron-right" color={colors.davys} size={25} />
                 </View>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }

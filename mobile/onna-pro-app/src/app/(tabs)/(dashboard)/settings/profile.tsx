@@ -14,7 +14,7 @@ import { useAsyncStorage } from "@/hooks/useAsyncStorage"
 import api from "@/services/api"
 
 export default function Profile() {
-   // declaração do async storage
+   // async storage
    const { readDataByID } = useAsyncStorage()
 
    // hooks
@@ -30,7 +30,7 @@ export default function Profile() {
     const Load = async () => {
       try {
         // confirmação
-        showToast("info", "INFORMAÇÃO", "Perfil")
+        showToast("info", "PERFIL", "")
 
         // id
         const id = await readDataByID("@login", "idTipo_Usuario")

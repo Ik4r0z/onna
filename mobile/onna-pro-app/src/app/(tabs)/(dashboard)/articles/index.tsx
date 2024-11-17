@@ -20,6 +20,8 @@ export default function Articles() {
 
     useEffect(() => {
         const Load = async () => {
+            showToast("info", "ARTIGOS", "")
+
             // exibir artigo
             try {
                 const res = await api.get("/api/artigo")

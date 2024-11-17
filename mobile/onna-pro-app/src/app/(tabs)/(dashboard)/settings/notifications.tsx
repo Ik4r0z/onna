@@ -1,7 +1,10 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { SafeAreaView, View, StatusBar, Text, Switch } from "react-native"
 
 import { colors } from "@/styles/colors"
+
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
 
 export default function Notifications() {
     // hooks
@@ -9,6 +12,15 @@ export default function Notifications() {
     const [ isArtigos, setIsArtigos ] = useState(true)
     const [ isNoticias, setIsNoticias ] = useState(false)
     const [ isDisponibilidade, setIsDisponibilidade ] = useState(true)
+
+    // hooks
+    useEffect(() => {
+        const Load = async () => {
+            showToast("info", "NOTIFICAÇÕES", "")
+        }
+        
+        Load()
+    }, [])
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
@@ -55,6 +67,7 @@ export default function Notifications() {
                     />
                 </View>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }

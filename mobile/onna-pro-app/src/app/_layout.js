@@ -28,7 +28,7 @@ const LayoutMain = () => {
             // redirecionar para home
             router.replace("/(dashboard)/chat/")
         } else if (isAuthenticated === false) {
-            // redirecionar para landing
+            // redirecionar para login
             router.replace("/(tabs)/login")
         }
     }, [isAuthenticated])
@@ -71,7 +71,6 @@ export default function Layout() {
     )
 }
 
+// temporário
 import { LogBox } from "react-native"
-
-// Ignore warnings específicos relacionados ao Layout
 LogBox.ignoreLogs(["Layout children must be of type Screen, all other children are ignored"])

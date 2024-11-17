@@ -21,6 +21,8 @@ import { useAsyncStorage } from "@/hooks/useAsyncStorage"
 import { router } from "expo-router"
 import { useAuth } from "@/context/authContext"
 
+import { avatarUrl } from "@/utils/avatar"
+
 export default function Home() {
     // idioma do calendário
     LocaleConfig.locales["pt-br"] = ptBR
@@ -38,7 +40,7 @@ export default function Home() {
     useEffect(()=>{
         const Load = async () => {
             // confirmação do login
-            showToast("success", "SUCESSO", "Home")
+            showToast("info", "HOME", "")
 
             // excluir @home
             await deleteData("@home")
@@ -93,7 +95,7 @@ export default function Home() {
 
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
-            <View className="w-full h-full justify-center items-center gap-[25px]" >
+            <View className="w-full h-full justify-center items-center gap-[21.875px]" >
                 <StatusBar barStyle={"dark-content"} />
 
                 <View className="w-[90%] h-[55px] bg-white rounded-full flex-row justify-between items-center p-4 shadow-xl shadow-black" >
@@ -147,12 +149,12 @@ export default function Home() {
                         <Text className="text-[18.75px] text-center color-white font-Imedium" >{day?.dateString}</Text>
                     </View>
  
-                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={ModalVisibility} >Consultar Agendamentos</Text>
-                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Salvar</Text>
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={ModalVisibility} >Consultar Agenda</Text>
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-600 font-Ibold" onPress={DayHandle} >Novo Agendamento</Text>
                 </View>
 
                 <Pressable onPress={logoutHandle} >
-                    <Text className="text-lg color-green-800 font-semibold" >Sair</Text>
+                    <Text className="w-[90%] h-[37.5px] text-[18.75px] text-center color-green-800 font-Ibold" >Sair</Text>
                 </Pressable>
                 
                 <Modal visible={modalVisible} animationType="fade" transparent={true} > 

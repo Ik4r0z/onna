@@ -1,6 +1,19 @@
+import React, { useEffect } from "react"
 import { SafeAreaView, View, StatusBar, Text, Image } from "react-native"
 
+import Toast from "react-native-toast-message"
+import { showToast } from "@/components/toast"
+
 export default function Community() {
+    // hooks
+    useEffect(() => {
+        const Load = async () => {
+            showToast("info", "COMUNIDADE", "")
+        }
+        
+        Load()
+    }, [])
+
     return (
         <SafeAreaView className="flex-1 bg-green-500" >   
             <View className="w-full h-full justify-center items-center gap-[50px]" >
@@ -18,6 +31,7 @@ export default function Community() {
                     />
                 </View>
             </View>
+            <Toast />
         </SafeAreaView>
     )
 }

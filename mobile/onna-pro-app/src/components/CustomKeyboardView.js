@@ -1,7 +1,6 @@
 import React from "react"
 import { KeyboardAvoidingView, ScrollView } from "react-native"
 
-
 export default function CustomKeyboardView({ children }) {
     return (
         <KeyboardAvoidingView
