@@ -32,26 +32,31 @@ export default function Home() {
     const { createData, readDataByID, deleteData } = useAsyncStorage()
 
     // hooks
-    const {logout} = useAuth()
+    const { logout } = useAuth()
     const [day, setDay] = useState<DateData>() // calendário
     const [nome, setNome] = useState<string>("")
+    const [avatar, setAvatar] = useState<string>("")
     const [modalVisible, setModalVisible] = useState<boolean>(false) // modal
 
-    useEffect(()=>{
+    // UseEffect sempre que a tela for carregada
+    useEffect(() => {
         const Load = async () => {
-            // confirmação do login
-            showToast("info", "HOME", "")
-
             // excluir @home
             await deleteData("@home")
 
             // nome do usuário
             const nome = await readDataByID("@login", "nome")
             setNome(nome)
+
+            // avatar
+            const avatar = await readDataByID("@login", "avatar")
+            setAvatar(avatar)
         }
 
         Load()
-    }, [])
+
+        // Adicionando dependência vazia para garantir execução na montagem da página
+    }, []) 
 
     // logout
     const logoutHandle = async () => {
@@ -60,13 +65,13 @@ export default function Home() {
 
     // day
     const Day = async (day: DateData) => {
-        try{
+        try {
             await createData("@home", day)
             router.push("/(dashboard)/home/update")
-        } 
+        }
         catch (error) {
             showToast("error", "ERRO", "" + error)
-            console.error
+            console.error(error)
             return
         }
     }
@@ -74,17 +79,17 @@ export default function Home() {
     // validação e inserção
     const DayHandle = () => {
         try {
-            if(day === undefined) {
+            if (day === undefined) {
                 showToast("error", "ERRO", "Selecione uma data")
                 console.error
-                return 
+                return
             }
 
             Day(day)
         }
         catch (error) {
             showToast("error", "ERRO", "" + error)
-            console.error
+            console.error(error)
             return
         }
     }
@@ -103,7 +108,7 @@ export default function Home() {
                         <Text className="text-[18.75px] color-green-600 font-Imedium" > {nome}</Text>
                     </Text>
 
-                    <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"small"} />
+                    <Avatar source={{ uri: avatarUrl[String(avatar)] }} size={"small"} />
                 </View>
 
                 <View className="w-[90%] max-h-[50%] bg-white rounded-[25px] gap-[12.5px] shadow-black shadow-2xl" >

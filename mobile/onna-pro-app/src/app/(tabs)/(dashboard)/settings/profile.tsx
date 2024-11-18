@@ -13,6 +13,8 @@ import { useAsyncStorage } from "@/hooks/useAsyncStorage"
 
 import api from "@/services/api"
 
+import { avatarUrl } from "@/utils/avatar"
+
 export default function Profile() {
    // async storage
    const { readDataByID } = useAsyncStorage()
@@ -23,14 +25,15 @@ export default function Profile() {
    const [dataNasc, setDataNasc] = useState<string>("")
    const [email, setEmail] = useState<string>("")
    const [area, setArea] = useState<string>("")
+   const [avatar, setAvatar] = useState<string>("")
    const [modalVisibleP, setModalVisibleP] = useState<boolean>(false) // modal profile
    const [modalVisibleA, setModalVisibleA] = useState<boolean>(false) // modal avatar
+   const [modalClosed, setModalClosed] = useState<boolean>(false) // monitorar modal
 
    useEffect(() => {
     const Load = async () => {
       try {
-        // confirmação
-        showToast("info", "PERFIL", "")
+        showToast("info", "Avatar", "Experimente do 1 ao 8!")
 
         // id
         const id = await readDataByID("@login", "idTipo_Usuario")
@@ -48,6 +51,11 @@ export default function Profile() {
         const email = await readDataByID("@login", "email")
         setEmail(email)
 
+        // avatar
+        const avatar = await readDataByID("@login", "avatar")
+        setAvatar(avatar)
+        console.log(avatar)
+
         if (id !== null) {
             const res = await api.get(`/api/perfilProfissional/${id}`)
 
@@ -63,7 +71,7 @@ export default function Profile() {
     }
 
     Load()
-  }, [])
+  }, [modalClosed]) 
 
     const ModalVisibilityP = () => {
         setModalVisibleP(true)
@@ -73,12 +81,22 @@ export default function Profile() {
         setModalVisibleA(true)
     }
 
+    const handleCloseProfileModal = () => {
+        setModalVisibleP(false)
+        setModalClosed(true)
+    }
+
+    const handleCloseAvatarModal = () => {
+        setModalVisibleA(false)
+        setModalClosed(true)
+    }
+
     return (
         <SafeAreaView className="flex-1 bg-gray" >   
             <View className="w-full h-full justify-center items-center gap-[18.75px]" >
                 <StatusBar barStyle={"dark-content"} />
 
-                    <Avatar source={{ uri: "https://mighty.tools/mockmind-api/content/human/68.jpg" }} size={"large"} />
+                    <Avatar source={{ uri: avatarUrl[String(avatar)] }} size={"large"} />
 
                     <Pressable className="w-[45%] h-[45px] bg-white justify-center items-center rounded-full shadow-md shadow-black" onPress={ModalVisibilityA}  >
                         <Text className="text-[15.625px] color-black font-Imedium" >Definir Foto de Perfil</Text>
@@ -109,11 +127,11 @@ export default function Profile() {
                     </Pressable>
 
                     <Modal visible={modalVisibleP} animationType="fade" transparent={true} > 
-                        <ModalProfile handleClose={() => setModalVisibleP(false)} />
+                        <ModalProfile handleClose={handleCloseProfileModal} />
                     </Modal>
 
                     <Modal visible={modalVisibleA} animationType="fade" transparent={true} > 
-                        <ModalAvatar handleClose={() => setModalVisibleA(false)} />
+                        <ModalAvatar handleClose={handleCloseAvatarModal} />
                     </Modal>
             </View>
             <Toast />

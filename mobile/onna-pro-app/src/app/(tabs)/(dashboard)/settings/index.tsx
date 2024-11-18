@@ -14,7 +14,6 @@ export default function Settings() {
     // hooks
     useEffect(() => {
         const Load = async () => {
-            showToast("info", "CONFIGURAÇÕES", "")
         }
         
         Load()

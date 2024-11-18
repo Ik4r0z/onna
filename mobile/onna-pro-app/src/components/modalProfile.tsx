@@ -19,7 +19,7 @@ type ModalProfileProps = {
 
 export function ModalProfile({ handleClose }: ModalProfileProps) {
    // declaração do async storage
-   const { readDataByID } = useAsyncStorage()
+   const { readDataByID, updateDataByID } = useAsyncStorage()
 
     //hooks
     const [id, setID] = useState<number>(0)
@@ -45,6 +45,7 @@ export function ModalProfile({ handleClose }: ModalProfileProps) {
 
             if(res.status === 200) {
                 console.log(res.data)
+                await updateDataByID("@login", id, "senha", senha)
                 handleClose()
             }
         } 

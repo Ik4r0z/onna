@@ -23,7 +23,6 @@ export default function Chat() {
     const [loadingUser, setLoadingUser] = useState(true)
 
     useEffect(() => {
-        showToast("info", "CHAT", "")
         console.log("useEffect executed")
         console.log("Current user state:", user)
         if (user === undefined) {

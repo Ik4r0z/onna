@@ -16,7 +16,6 @@ export default function Notifications() {
     // hooks
     useEffect(() => {
         const Load = async () => {
-            showToast("info", "NOTIFICAÇÕES", "")
         }
         
         Load()

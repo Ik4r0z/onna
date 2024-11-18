@@ -89,7 +89,7 @@ int sendGpsToServer()
       //if (latitude == 0) {return 0;}
 
       String url, temp;
-      url = "http://ENTER_YOUR_WEBSITE/gpsdata.php?lat=";
+      url = "http://http://gps-arduino-tracker.free.nf//gpsdata.php?lat=";
       url += latitude;
       url += "&lng=";
       url += longitude;
@@ -110,7 +110,7 @@ int sendGpsToServer()
     //Iniciar serviço HTTP
     sendATcommand("AT+HTTPINIT", "OK", 2000); 
     sendATcommand("AT+HTTPPARA=\"CID\",1", "OK", 1000);
-    //Define a URL HTTP sim800.print("AT+HTTPPARA="URL","http://ENTER_YOUR_WEBSITE/gpsdata.php?lat=222&lng=222"\r");
+    //Define a URL HTTP sim800.print("AT+HTTPPARA="URL","http://http://gps-arduino-tracker.free.nf//gpsdata.php?lat=222&lng=222"\r");
     sim800L.print("AT+HTTPPARA=\"URL\",\"");
     sim800L.print(url);
     sendATcommand("\"", "OK", 1000);

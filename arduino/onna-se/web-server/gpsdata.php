@@ -10,7 +10,7 @@ echo "<br>";
 echo $lng;
 
 
-$sql = "INSERT INTO tbl_gps(lat,lng,created_date) 
+$sql = "INSERT INTO tbl_gps(lat,lng,created_at) 
 	VALUES('".$lat."','".$lng."','".date("Y-m-d H:i:s")."')";
 
 if($db->query($sql) === FALSE)

@@ -8,7 +8,6 @@ export default function Community() {
     // hooks
     useEffect(() => {
         const Load = async () => {
-            showToast("info", "COMUNIDADE", "")
         }
         
         Load()

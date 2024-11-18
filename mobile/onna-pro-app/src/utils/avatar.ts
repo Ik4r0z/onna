@@ -1,10 +1,10 @@
-export const avatarUrl = {
-    1: "https://drive.google.com/uc?export=view&id=1pFjizYiah-PVDBAMzidV7b7IJUPSRl3k",
-    2: "https://drive.google.com/uc?export=view&id=1sii85zY5VfGbmsEq0cFF4jhoD7O9cTDe",
-    3: "https://drive.google.com/uc?export=view&id=1S3-EkRsZv5pZoxd1aNy7XLHVE9zfUh7e",
-    4: "https://drive.google.com/uc?export=view&id=1n_x-PemQ2N-HgB-q4pmuQF3N2_Qd_Br2",
-    5: "https://drive.google.com/uc?export=view&id=1zYfvRaYNcXpX1j7u7MI00t0oy7AzmL1K",
-    6: "https://drive.google.com/uc?export=view&id=10wcNIztD0iXXa3LhJp5zsZKfg0gZObqf",
-    7: "https://drive.google.com/uc?export=view&id=1Rkby8-2Wf-iQb2UBW9gOzhV3TejuQ4fz",
-    8: "https://drive.google.com/uc?export=view&id=13__082N9LStjqtIS_wjUrc0rjCuQ9d-9"
+export const avatarUrl: { [key: string]: string } = {
+    1: "https://drive.google.com/uc?export=view&id=1lTWQtxO2V_luznNylXh2eAqrEEJZbr-w",
+    2: "https://drive.google.com/uc?export=view&id=1VPxiXCBfJNadQ5FP6rRhg_Bt78QAwvhk",
+    3: "https://drive.google.com/uc?export=view&id=11ZsI8PU_xnMsVddth5A3Mrx48y3UhAVA",
+    4: "https://drive.google.com/uc?export=view&id=1YQRQQ92ELHMUUar-8BdrlHwfiyOKQtcc",
+    5: "https://drive.google.com/uc?export=view&id=1MKr3_psm84USzYW_2-NzZG55wAkAgASt",
+    6: "https://drive.google.com/uc?export=view&id=1sV5p7b_xryjQiUkRv-ROvHuAn8OpUHiq",
+    7: "https://drive.google.com/uc?export=view&id=19aFyOuO1OuiJ8UgInAzEYXbmkjViE6Df",
+    8: "https://drive.google.com/uc?export=view&id=1Ljgk4LIbToRH5v0TgKDZQ463PXzm_80w"
 }
