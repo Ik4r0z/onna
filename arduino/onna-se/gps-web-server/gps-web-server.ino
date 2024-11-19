@@ -89,7 +89,7 @@ int sendGpsToServer()
       //if (latitude == 0) {return 0;}
 
       String url, temp;
-      url = "http://http://gps-arduino-tracker.free.nf//gpsdata.php?lat=";
+      url = "http://gps-arduino-tracker.free.nf//gpsdata.php?lat=";
       url += latitude;
       url += "&lng=";
       url += longitude;
