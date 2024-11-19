@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { SafeAreaView, StatusBar, View, Pressable, ActivityIndicator } from "react-native"
+import { SafeAreaView, StatusBar, View, Pressable, ActivityIndicator, ScrollView } from "react-native"
 
 import { colors } from "@/styles/colors"
 import { MaterialIcons } from "@expo/vector-icons"

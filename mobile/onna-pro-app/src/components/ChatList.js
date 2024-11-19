@@ -9,13 +9,15 @@ export default function ChatList({ users, currentUser }) {
     const router = useRouter()
 
     return (
-        <View className="flex-1" >
+        <View className="flex-1">
             <FlatList
                 data={users}
-                contentContainerStyle={{ flex: 1, paddingVertical: 25 }}
+                contentContainerStyle={{ flexGrow: 1, paddingVertical: 25 }}
                 keyExtractor={item => Math.random()}
                 showsVerticalScrollIndicator={false}
-                renderItem={({ item, index }) => <ChatItem item={item} currentUser={currentUser} index={index} router={router} />}
+                renderItem={({ item, index }) => (
+                    <ChatItem item={item} currentUser={currentUser} index={index} router={router} />
+                )}
             />
         </View>
     )

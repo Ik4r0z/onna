@@ -27,7 +27,7 @@ export default function Login() {
         try {
             const res = await api.post("/api/auth/tipoUsuario", {
                 email: email, // Yasmim@gmail.com
-                senha: senha  // C!@nm123543
+                senha: senha  // EssaContaNaoLoga
             })
 
             if(res.status === 200) {
