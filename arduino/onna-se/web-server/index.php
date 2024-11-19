@@ -3,6 +3,8 @@
 //solução: clique no link "APIs e serviços"
 //          clique no botão "Ativar APIs e serviços"
 //			    Selecione "API Maps JavaScript" e clique em ativar
+//          para pegar a chave da api, utilize https://console.cloud.google.com/
+//          caso a api do maps falhe, utilize https://www.google.com/maps?q=latitude,longitude
 
 require 'config.php';
 
