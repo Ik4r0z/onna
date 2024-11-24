@@ -42,8 +42,8 @@ export default function Index() {
                 </View>
 
                 <View className="" >
-                    <Image className="w-[250px] h-[335.5px]"
-                        source={require("@/assets/images/doctor.png")}
+                    <Image className="w-[237px] h-[335.5px]"
+                        source={require("@/assets/images/cat.png")}
                     />
                 </View>
 
